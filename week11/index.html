@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>글쓰기의 윤리 복습 퀴즈</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one narrow reading column, lecture header strip on top, sticky language bar, one question card at a time */
+:root{
+  --bg:#FFFFFF; --surface:#F1F5F9; --line:#E2E8F0;
+  --ink:#0E1116; --body:#2F3844; --sub:#6E7887;
+  --blue:#1D52FC; --blue-deep:#1136C7; --blue-soft:#E8EDFE; --blue-line:#D5DEFC; --on-blue:#FFFFFF;
+  --gold:#D9A445; --gold-deep:#B8862E; --cream:#FDF6E7; --cream-line:#F0DFB8;
+  --rose:#FDECEF; --rose-line:#F6D6DD; --rose-ink:#8E3450;
+  --bar-a:#E9AE48; --bar-b:#3E5E86; --strip-ink:#0E1116;
+  --glow:rgba(29,82,252,.22);
+  --shadow:0 6px 22px rgba(20,40,90,.07);
+  --f-disp:"Black Han Sans","Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-body:"IBM Plex Sans KR","Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1220; --surface:#161C2E; --line:#273049;
+    --ink:#EEF1F8; --body:#CBD2E0; --sub:#8F99AE;
+    --blue:#5B82FF; --blue-deep:#3E66F2; --blue-soft:#1A2452; --blue-line:#2D3C7A; --on-blue:#FFFFFF;
+    --gold:#E0B055; --gold-deep:#E8BF6A; --cream:#231D12; --cream-line:#4A3C1E;
+    --rose:#2B1820; --rose-line:#5A2A3C; --rose-ink:#F2A9BE;
+    --glow:rgba(91,130,255,.20); --shadow:0 6px 22px rgba(0,0,0,.35);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1220; --surface:#161C2E; --line:#273049;
+  --ink:#EEF1F8; --body:#CBD2E0; --sub:#8F99AE;
+  --blue:#5B82FF; --blue-deep:#3E66F2; --blue-soft:#1A2452; --blue-line:#2D3C7A; --on-blue:#FFFFFF;
+  --gold:#E0B055; --gold-deep:#E8BF6A; --cream:#231D12; --cream-line:#4A3C1E;
+  --rose:#2B1820; --rose-line:#5A2A3C; --rose-ink:#F2A9BE;
+  --glow:rgba(91,130,255,.20); --shadow:0 6px 22px rgba(0,0,0,.35);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--body);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+
+/* lecture header strip */
+.strip{display:flex;align-items:center;height:28px;background:linear-gradient(90deg,var(--bar-a),var(--bar-b));color:var(--strip-ink);font-weight:700;font-size:13px}
+.strip .no{background:#0E1116;color:#fff;height:100%;display:grid;place-items:center;padding-inline:max(12px,env(safe-area-inset-left,0px)) 12px;font-variant-numeric:tabular-nums}
+.strip .lab{padding-inline:12px;white-space:nowrap}
+.strip .right{margin-left:auto;padding-right:max(16px,env(safe-area-inset-right,0px));color:#fff;font-weight:500;font-size:12px;white-space:nowrap}
+@media (max-width:520px){.strip .right{display:none}}
+
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding-block:28px 0}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;
+  background:linear-gradient(90deg,transparent 52%,var(--glow) 72%,transparent 80%,var(--glow) 93%,transparent)}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 12px;font-size:12.5px;font-weight:700;letter-spacing:.02em;white-space:nowrap}
+.chip.gold{background:var(--gold);color:#1B1406}
+.chip.soft{background:var(--blue-soft);color:var(--blue-deep)}
+.chip.cream{background:var(--cream);color:var(--gold-deep);border:1px solid var(--cream-line)}
+:root[data-theme="dark"] .chip.soft{color:var(--ink)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .chip.soft{color:var(--ink)}}
+h1{font-family:var(--f-disp);font-weight:400;font-size:clamp(2.3rem,7vw,3.3rem);line-height:1.15;color:var(--ink);margin:12px 0 0;letter-spacing:.01em;text-wrap:balance}
+h1 em{font-style:normal;color:var(--blue)}
+.rule{height:3px;margin-top:14px;background:linear-gradient(90deg,var(--gold),#6C7A8E)}
+.meta{display:flex;flex-wrap:wrap;gap:4px 14px;margin:12px 0 0;color:var(--sub);font-size:14px}
+.meta b{color:var(--blue);font-weight:700}
+.hero .sub-tr{display:block;color:var(--sub);font-size:13px;margin-top:2px}
+
+/* sticky language bar */
+.langbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-top:20px}
+.langbar .wrap{display:flex;align-items:center;gap:10px;padding-block:10px}
+.langbar .lb{font-size:12.5px;font-weight:700;color:var(--sub);white-space:nowrap}
+.langs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;min-width:0;padding:2px}
+.langs::-webkit-scrollbar{display:none}
+.lang{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 13px;font-size:14px;font-weight:600;cursor:pointer;color:var(--body);min-height:36px}
+.lang[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:var(--on-blue)}
+
+/* progress */
+.prog{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;margin:20px 0 14px}
+.seg{height:30px;border-radius:8px;border:1px solid var(--line);background:var(--surface);font-size:12px;font-weight:700;color:var(--sub);cursor:pointer;font-variant-numeric:tabular-nums;padding:0}
+.seg:disabled{cursor:default;opacity:.55}
+.seg.ok{background:var(--blue);border-color:var(--blue);color:var(--on-blue)}
+.seg.no{background:var(--rose);border-color:var(--rose-line);color:var(--rose-ink)}
+.seg.cur{outline:2px solid var(--ink);outline-offset:1px}
+
+/* question card */
+.card{background:var(--bg);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:22px 20px 20px}
+.qhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.qnum{width:34px;height:34px;border-radius:50%;background:var(--blue);color:var(--on-blue);display:grid;place-items:center;font-weight:700;font-size:14px;flex:none;font-variant-numeric:tabular-nums}
+.count{margin-left:auto;color:var(--sub);font-size:13px;font-variant-numeric:tabular-nums}
+.qtext{font-size:clamp(1.12rem,3.6vw,1.3rem);font-weight:700;color:var(--ink);line-height:1.55;margin:16px 0 18px;text-wrap:pretty}
+.ko{display:block}
+.tr{display:block;font-size:.8em;font-weight:500;color:var(--sub);line-height:1.5;margin-top:3px}
+
+.opts{display:grid;gap:10px}
+.opt{display:flex;align-items:flex-start;gap:12px;text-align:left;width:100%;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:13px 14px;cursor:pointer;min-height:52px;transition:border-color .15s,background .15s}
+.opt:hover:not(:disabled){border-color:var(--blue-line);background:var(--blue-soft)}
+.opt .bd{width:26px;height:26px;border-radius:50%;flex:none;display:grid;place-items:center;background:var(--bg);border:1.5px solid var(--blue-line);color:var(--blue);font-weight:700;font-size:13px;margin-top:1px}
+.opt .tx{min-width:0;font-size:15.5px;color:var(--body);font-weight:500}
+
+.oxrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ox{display:flex;flex-direction:column;align-items:center;gap:2px;background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:16px 8px 14px;cursor:pointer;transition:border-color .15s,background .15s}
+.ox:hover:not(:disabled){border-color:var(--blue-line);background:var(--blue-soft)}
+.ox .gl{font-family:var(--f-disp);font-size:3rem;line-height:1;color:var(--blue)}
+.ox.x .gl{color:var(--rose-ink)}
+.ox .lab{font-size:14.5px;font-weight:600;color:var(--body);text-align:center}
+
+.opt:disabled,.ox:disabled{cursor:default}
+.is-right{background:var(--blue-soft)!important;border-color:var(--blue)!important}
+.is-right .bd{background:var(--blue);border-color:var(--blue);color:var(--on-blue)}
+.is-wrong{background:var(--rose)!important;border-color:var(--rose-ink)!important}
+.is-wrong .bd{background:var(--rose-ink);border-color:var(--rose-ink);color:var(--bg)}
+.is-dim{opacity:.5}
+
+/* feedback */
+.fb{margin-top:18px;display:grid;gap:10px}
+.verdict{display:flex;align-items:flex-start;gap:10px;font-weight:700;font-size:16.5px;margin:0;color:var(--ink)}
+.verdict .mk{width:28px;height:28px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:15px;color:#fff}
+.fb.ok .mk{background:var(--blue)}
+.fb.no .mk{background:var(--rose-ink);color:var(--bg)}
+.ans{font-size:14.5px;color:var(--body);margin:0}
+.ans b{color:var(--blue-deep)}
+:root[data-theme="dark"] .ans b{color:var(--blue)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ans b{color:var(--blue)}}
+.exp{background:var(--cream);border:1px solid var(--cream-line);border-radius:14px;padding:14px 16px}
+.exp-h{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.exp-h .src{margin-left:auto;font-size:12.5px;color:var(--gold-deep);font-weight:600}
+.exp p{margin:0;font-size:15px;color:var(--body)}
+
+.nav{display:flex;gap:10px;margin-top:18px}
+.btn{border:0;border-radius:999px;padding:12px 22px;font-weight:700;font-size:15.5px;cursor:pointer;min-height:48px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.3}
+.btn .tr{color:inherit;opacity:.8;margin-top:1px}
+.btn.primary{background:var(--blue);color:var(--on-blue);margin-left:auto;min-width:160px}
+.btn.primary:hover{background:var(--blue-deep)}
+.btn.ghost{background:transparent;color:var(--sub);border:1.5px solid var(--line)}
+.hint{color:var(--sub);font-size:13.5px;margin:14px 0 0;text-align:center}
+
+/* result */
+.result{text-align:left}
+.score{display:flex;align-items:baseline;gap:8px;margin:14px 0 4px}
+.score b{font-family:var(--f-disp);font-weight:400;font-size:4.5rem;line-height:1;color:var(--blue);font-variant-numeric:tabular-nums}
+.score span{font-family:var(--f-disp);font-size:1.8rem;color:var(--sub)}
+.r-line{font-size:17px;font-weight:700;color:var(--ink);margin:6px 0 0}
+.r-msg{margin:6px 0 0;font-size:15.5px}
+.review{margin-top:22px;border-top:1px solid var(--line);padding-top:16px}
+.review h3{font-size:15px;color:var(--ink);margin:0 0 10px}
+.rv{display:grid;gap:10px;list-style:none;padding:0;margin:0}
+.rv li{display:flex;gap:12px;align-items:flex-start;background:var(--rose);border:1px solid var(--rose-line);border-radius:12px;padding:12px 14px}
+.rv .n{font-weight:700;color:var(--rose-ink);flex:none;font-variant-numeric:tabular-nums}
+.rv .c{min-width:0;flex:1;font-size:14.5px}
+.rv .c .ans{margin-top:4px;font-size:13.5px}
+.rv button{flex:none;border:1px solid var(--rose-line);background:var(--bg);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;cursor:pointer;color:var(--rose-ink)}
+.allok{background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:12px;padding:14px 16px;margin-top:20px;color:var(--ink);font-weight:600}
+
+footer{margin:28px 0 36px;color:var(--sub);font-size:12.5px;line-height:1.6}
+footer b{color:var(--body);font-weight:700}
+
+@media (max-width:440px){
+  .card{padding:18px 15px 16px;border-radius:16px}
+  .seg{height:26px;font-size:11px;border-radius:6px}
+  .prog{gap:4px}
+  .btn.primary{min-width:0;flex:1}
+  .rv li{flex-wrap:wrap}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media (prefers-reduced-motion:no-preference){.card{animation:rise .25s ease-out both}@keyframes rise{from{transform:translateY(6px)}to{transform:none}}}
+</style>
+</head>
+<body>
+
+<div class="strip" aria-hidden="true">
+  <span class="no">10</span>
+  <span class="lab">Week 10 · 복습 퀴즈</span>
+  <span class="right">AI 시대 쓰기의 힘 · 외국인 학부생을 위한 글쓰기</span>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="chip gold">Week 10 Review</span>
+    <h1>글쓰기의 <em>윤리</em></h1>
+    <div class="rule"></div>
+    <p class="meta"><span>made by 유환일 (한양대학교 교양국어위원회)</span></p>
+    <p class="meta"><span><b>10문항</b> · O/X 5개 · 선택 문제 5개</span><span>약 5분</span><span>교재 80–90쪽</span></p>
+    <span class="sub-tr" id="heroTr"></span>
+  </div>
+</header>
+
+<nav class="langbar" aria-label="번역 언어">
+  <div class="wrap">
+    <span class="lb">번역</span>
+    <div class="langs" id="langs"></div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <div class="prog" id="prog" aria-label="진행 상황"></div>
+  <div id="app"></div>
+  <footer>
+    <b>Made by</b> 유환일 (한양대학교 교양국어위원회)<br>
+    <b>교재 근거</b> 한양대학교 교양국어교육위원회 편, 『이것이 한국어다: 글쓰기』(전면개정판), 80–90쪽 · 10주차 강의자료<br>
+    결과는 이 기기에만 저장되며 교수자에게 전송되지 않습니다.
+  </footer>
+</main>
+
+<script>
+const LANGS=[
+  {c:"zh",h:"zh-Hans",l:"中文"},
+  {c:"en",h:"en",l:"English"},
+  {c:"ru",h:"ru",l:"Русский"},
+  {c:"ja",h:"ja",l:"日本語"},
+  {c:"mn",h:"mn",l:"Монгол"}
+];
+
+const T={
+  koOnly:{ko:"한국어만"},
+  hero:{zh:"第10周复习测验 · 写作伦理 · 10题 · 约5分钟",en:"Week 10 review quiz · Ethics in Writing · 10 questions · about 5 minutes",ru:"Повторение 10-й недели · Этика письма · 10 вопросов · около 5 минут",ja:"第10週 復習クイズ · 文章作成の倫理 · 10問 · 約5分",mn:"10 дахь долоо хоногийн давтлага · Бичгийн ёс зүй · 10 асуулт · 5 минут орчим"},
+  ox:{ko:"O/X 퀴즈",zh:"判断题",en:"True or false",ru:"Верно или неверно",ja:"○×問題",mn:"Зөв/буруу"},
+  mc:{ko:"선택 문제",zh:"选择题",en:"Multiple choice",ru:"Выбор ответа",ja:"選択問題",mn:"Сонгох асуулт"},
+  o:{ko:"맞다",zh:"对",en:"True",ru:"Верно",ja:"正しい",mn:"Зөв"},
+  x:{ko:"틀리다",zh:"错",en:"False",ru:"Неверно",ja:"間違い",mn:"Буруу"},
+  right:{ko:"정답입니다!",zh:"回答正确！",en:"Correct!",ru:"Верно!",ja:"正解です！",mn:"Зөв байна!"},
+  wrong:{ko:"아쉬워요. 해설을 읽어 봅시다.",zh:"很遗憾。来看看解析吧。",en:"Not quite. Let's read the explanation.",ru:"Не совсем. Прочитайте пояснение.",ja:"残念！解説を読んでみましょう。",mn:"Харамсалтай. Тайлбарыг уншицгаая."},
+  answer:{ko:"정답",zh:"正确答案",en:"Answer",ru:"Ответ",ja:"正解",mn:"Зөв хариулт"},
+  exp:{ko:"해설",zh:"解析",en:"Explanation",ru:"Пояснение",ja:"解説",mn:"Тайлбар"},
+  next:{ko:"다음 문제",zh:"下一题",en:"Next question",ru:"Следующий вопрос",ja:"次の問題",mn:"Дараагийн асуулт"},
+  prev:{ko:"이전",zh:"上一题",en:"Back",ru:"Назад",ja:"前へ",mn:"Өмнөх"},
+  result:{ko:"결과 보기",zh:"查看结果",en:"See results",ru:"Посмотреть результат",ja:"結果を見る",mn:"Үр дүнг харах"},
+  retry:{ko:"다시 풀기",zh:"重新作答",en:"Try again",ru:"Пройти снова",ja:"もう一度解く",mn:"Дахин бөглөх"},
+  pick:{ko:"답을 하나 고르세요.",zh:"请选择一个答案。",en:"Choose one answer.",ru:"Выберите один ответ.",ja:"答えを一つ選んでください。",mn:"Нэг хариулт сонгоно уу."},
+  got:{ko:"10문제 중 {n}문제를 맞혔습니다.",zh:"10题中答对了{n}题。",en:"You got {n} out of 10.",ru:"Правильных ответов: {n} из 10.",ja:"10問中{n}問正解です。",mn:"10 асуултаас {n}-д зөв хариуллаа."},
+  m10:{ko:"모두 맞혔습니다. 10주차 내용을 잘 기억하고 있어요.",zh:"全部答对！你很好地掌握了第10周的内容。",en:"Perfect! You remember Week 10 well.",ru:"Отлично! Вы хорошо помните материал 10-й недели.",ja:"全問正解！第10週の内容をよく覚えています。",mn:"Бүгд зөв! 10 дахь долоо хоногийн хичээлийг сайн санаж байна."},
+  m7:{ko:"잘했어요. 틀린 문제의 해설만 다시 읽어 보세요.",zh:"做得好。请再读一下答错题目的解析。",en:"Well done. Reread the explanations for the ones you missed.",ru:"Хорошо. Перечитайте пояснения к вопросам с ошибками.",ja:"よくできました。間違えた問題の解説をもう一度読んでみましょう。",mn:"Сайн байна. Алдсан асуултынхаа тайлбарыг дахин уншаарай."},
+  m0:{ko:"교재 80–90쪽을 다시 보고 한 번 더 풀어 봅시다.",zh:"请再看一遍教材第80–90页，然后再做一次。",en:"Review pages 80–90 of the textbook and try once more.",ru:"Просмотрите ещё раз с. 80–90 учебника и попробуйте снова.",ja:"教科書80〜90ページをもう一度見て、再挑戦しましょう。",mn:"Сурах бичгийн 80–90-р хуудсыг дахин үзээд, дахин оролдоорой."},
+  review:{ko:"다시 볼 문제",zh:"需要复习的题目",en:"Questions to review",ru:"Вопросы для повторения",ja:"見直す問題",mn:"Дахин харах асуултууд"},
+  see:{ko:"해설 보기",zh:"看解析",en:"View",ru:"Открыть",ja:"解説を見る",mn:"Харах"},
+  allok:{ko:"틀린 문제가 없습니다. 오늘 수업에서 직접 인용 1회, 간접 인용 1회를 넣어 써 봅시다.",zh:"没有答错的题。今天的课上，试着写一段包含一次直接引用和一次间接引用的文字吧。",en:"No mistakes. In today's class, try writing with one direct and one indirect quotation.",ru:"Ошибок нет. Сегодня на занятии попробуйте написать текст с одной прямой и одной косвенной цитатой.",ja:"間違えた問題はありません。今日の授業では、直接引用1回と間接引用1回を入れて書いてみましょう。",mn:"Алдаа алга. Өнөөдрийн хичээлээр нэг шууд, нэг шууд бус эшлэл оруулан бичиж үзээрэй."}
+};
+
+const Q=[
+ {type:"ox",ans:1,src:"교재 83쪽",
+  q:{ko:"지난 학기에 내가 쓴 리포트라면 다른 과목에 다시 제출해도 된다.",zh:"如果是我上学期写的报告，可以再交给另一门课。",en:"If I wrote the report myself last semester, I may submit it again for another course.",ru:"Если я сам(а) написал(а) реферат в прошлом семестре, его можно снова сдать по другому предмету.",ja:"前の学期に自分が書いたレポートなら、別の科目にもう一度提出してもよい。",mn:"Өнгөрсөн улиралд өөрөө бичсэн илтгэлээ өөр хичээлд дахин өгч болно."},
+  exp:{ko:"같은 글을 두 군데 이상 제출하거나 서론·결론만 바꾸어 내는 것은 ‘자기복제·중복 제출형’ 부정행위입니다. 내가 쓴 글도 다시 활용할 때는 그 사실을 밝혀야 합니다.",zh:"同一篇文章提交到两个以上的地方，或只改动引言和结论再提交，属于“自我复制·重复提交型”不端行为。即使是自己写的文章，再次使用时也必须说明。",en:"Submitting the same text in two or more places, or changing only the introduction and conclusion, is the 'self-duplication / duplicate submission' type of misconduct. Even when you reuse your own writing, you must say so.",ru:"Сдавать один и тот же текст в два и более места или менять только введение и заключение — это нарушение типа «самоплагиат / повторная сдача». Даже если вы повторно используете свой текст, об этом нужно сообщить.",ja:"同じ文章を二か所以上に提出したり、序論・結論だけを変えて提出したりするのは「自己複製・重複提出型」の不正行為です。自分の文章でも、再利用するときはそのことを明記しなければなりません。",mn:"Нэг бичвэрийг хоёр ба түүнээс дээш газар өгөх, эсвэл зөвхөн удиртгал, дүгнэлтийг нь өөрчилж өгөх нь «өөрийгөө хуулах·давхар өгөх» төрлийн зөрчил юм. Өөрийн бичвэрийг дахин ашиглахдаа ч үүнийгээ заавал тэмдэглэх ёстой."}},
+ {type:"mc",ans:1,src:"교재 84쪽",
+  q:{ko:"‘간접 인용’에 대한 설명으로 알맞은 것은?",zh:"下列哪一项是对“间接引用”的正确说明？",en:"Which one describes 'indirect quotation' (paraphrase)?",ru:"Какое описание подходит к «косвенному цитированию» (пересказу)?",ja:"「間接引用」の説明として正しいものはどれですか。",mn:"«Шууд бус эшлэл»-ийн зөв тайлбар аль нь вэ?"},
+  opts:[
+   {ko:"원문의 표현을 그대로 가져오고 큰따옴표와 출처를 쓴다.",zh:"原样搬用原文表达，并加上双引号和出处。",en:"Copy the original words exactly, with quotation marks and the source.",ru:"Дословно переносить слова оригинала, ставить кавычки и указывать источник.",ja:"原文の表現をそのまま使い、引用符と出典を書く。",mn:"Эх бичвэрийн үгийг яг хэвээр нь авч, хашилт болон эх сурвалжийг бичнэ."},
+   {ko:"원저자를 밝히며 자신의 언어로 요약하여 쓴다.",zh:"注明原作者，用自己的语言概括写出。",en:"Name the original author and summarize the idea in your own words.",ru:"Называть автора оригинала и излагать мысль своими словами.",ja:"原著者を明らかにし、自分の言葉で要約して書く。",mn:"Эх зохиогчийг нэрлэж, өөрийн үгээр товчлон бичнэ."},
+   {ko:"다른 사람이 인용한 자료를 다시 인용한다.",zh:"再次引用别人已经引用过的资料。",en:"Quote material that someone else has already quoted.",ru:"Цитировать материал, который уже процитировал кто-то другой.",ja:"他の人が引用した資料をもう一度引用する。",mn:"Өөр хүний иш татсан материалыг дахин иш татна."},
+   {ko:"남의 생각을 출처 없이 내 것처럼 쓴다.",zh:"不注明出处，把别人的想法当作自己的来写。",en:"Use someone else's idea as your own, without a source.",ru:"Выдавать чужую мысль за свою без указания источника.",ja:"他人の考えを出典なしに自分のもののように書く。",mn:"Бусдын санааг эх сурвалжгүйгээр өөрийнх мэт бичнэ."}],
+  exp:{ko:"간접 인용은 원저자를 밝히면서 내용을 자신의 언어로 바꾸어 쓰는 방식입니다. 1번은 직접 인용, 3번은 재인용, 4번은 표절입니다.",zh:"间接引用是注明原作者，并用自己的语言改写内容的方式。1是直接引用，3是转引，4是剽窃。",en:"Indirect quotation means naming the original author while rewriting the content in your own words. Option 1 is direct quotation, 3 is secondary citation, and 4 is plagiarism.",ru:"Косвенное цитирование — это пересказ содержания своими словами с указанием автора. Вариант 1 — прямая цитата, 3 — цитирование из вторичного источника, 4 — плагиат.",ja:"間接引用とは、原著者を明らかにしながら内容を自分の言葉で書き直す方法です。1は直接引用、3は再引用（孫引き）、4は剽窃です。",mn:"Шууд бус эшлэл гэдэг нь эх зохиогчийг нэрлээд агуулгыг өөрийн үгээр өөрчлөн бичих арга юм. 1 нь шууд эшлэл, 3 нь давхар эшлэл, 4 нь хулгайн бичвэр (плагиат) юм."}},
+ {type:"ox",ans:1,src:"교재 83쪽",
+  q:{ko:"출처만 정확히 쓰면, 내 생각 없이 인용 자료만으로 글을 채워도 된다.",zh:"只要准确注明出处，即使没有自己的想法、只用引用资料填满文章也可以。",en:"As long as I cite the sources correctly, I can fill my essay with quotations only, without my own ideas.",ru:"Если правильно указать источники, можно заполнить текст одними цитатами без собственных мыслей.",ja:"出典さえ正確に書けば、自分の考えなしに引用資料だけで文章を埋めてもよい。",mn:"Эх сурвалжаа зөв бичсэн л бол өөрийн санаагүйгээр зөвхөн иш татсан материалаар бичвэрээ дүүргэж болно."},
+  exp:{ko:"자기 생각이나 분석 없이 인용 자료만 이어 붙이면 ‘짜깁기형’ 부정행위가 됩니다. 인용 뒤에는 반드시 내 해석이 한 문장 이상 따라야 합니다.",zh:"没有自己的想法或分析，只把引用资料拼接起来，就属于“拼凑型”不端行为。引用之后必须加上至少一句自己的解释。",en:"Stringing quotations together without your own thinking or analysis is the 'patchwriting' type of misconduct. Every quotation must be followed by at least one sentence of your own interpretation.",ru:"Если просто соединять цитаты без собственных мыслей и анализа, это нарушение типа «компиляция». После каждой цитаты должно идти хотя бы одно предложение вашей интерпретации.",ja:"自分の考えや分析なしに引用資料をつなぎ合わせるだけでは「切り貼り型」の不正行為になります。引用の後には必ず自分の解釈を一文以上加えましょう。",mn:"Өөрийн санаа, шинжилгээгүйгээр зөвхөн эшлэлүүдийг холбож бичвэл «нөхөж оёх» төрлийн зөрчил болно. Эшлэлийн дараа өөрийн тайлбарыг дор хаяж нэг өгүүлбэрээр заавал бичих ёстой."}},
+ {type:"mc",ans:0,src:"교재 83쪽",
+  q:{ko:"공동 작업에 참여하지 않고 저자로 이름만 올리는 ‘무임승차’는 어떤 유형의 부정행위인가?",zh:"没有参与共同作业，却只把名字列为作者的“搭便车”行为，属于哪一类不端行为？",en:"Putting your name as an author on group work you did not take part in ('free riding') is which type of misconduct?",ru:"К какому типу нарушений относится «безбилетник» — указать своё имя как автора в групповой работе, в которой вы не участвовали?",ja:"共同作業に参加せず、著者として名前だけを載せる「ただ乗り」は、どの類型の不正行為ですか。",mn:"Хамтын ажилд оролцоогүй мөртлөө зөвхөн нэрээ зохиогчоор бичүүлэх «үнэгүй зорчигч» нь ямар төрлийн зөрчил вэ?"},
+  opts:[
+   {ko:"위조·대필형",zh:"伪造·代写型",en:"Forgery / ghostwriting",ru:"Подлог / написание за другого",ja:"偽造・代筆型",mn:"Хуурамчаар үйлдэх·бусдаар бичүүлэх"},
+   {ko:"자기복제·중복 제출형",zh:"自我复制·重复提交型",en:"Self-duplication / duplicate submission",ru:"Самоплагиат / повторная сдача",ja:"自己複製・重複提出型",mn:"Өөрийгөө хуулах·давхар өгөх"},
+   {ko:"자료 위조·변조형",zh:"资料伪造·篡改型",en:"Data fabrication / falsification",ru:"Фальсификация / подделка данных",ja:"資料偽造・改ざん型",mn:"Мэдээлэл хуурамчаар үйлдэх·өөрчлөх"},
+   {ko:"표절·짜깁기형",zh:"剽窃·拼凑型",en:"Plagiarism / patchwriting",ru:"Плагиат / компиляция",ja:"剽窃・切り貼り型",mn:"Хулгайн бичвэр·нөхөж оёх"}],
+  exp:{ko:"교재는 무임승차를 ‘위조·대필형’에 넣습니다. 남의 글을 내 이름으로 내는 것, 이미 나온 문헌을 내 글로 위장하는 것도 같은 유형입니다.",zh:"教材把搭便车归入“伪造·代写型”。用自己的名字提交别人的文章、把已发表的文献伪装成自己的文章，也属于同一类型。",en:"The textbook puts free riding under 'forgery / ghostwriting'. Submitting someone else's writing under your name, or disguising published work as your own, belong to the same type.",ru:"В учебнике «безбилетник» отнесён к типу «подлог / написание за другого». К этому же типу относится сдача чужого текста под своим именем и выдача опубликованной работы за свою.",ja:"教科書では、ただ乗りを「偽造・代筆型」に分類しています。他人の文章を自分の名前で出すことや、既刊の文献を自分の文章に見せかけることも同じ類型です。",mn:"Сурах бичигт «үнэгүй зорчигч»-ийг «хуурамчаар үйлдэх·бусдаар бичүүлэх» төрөлд хамааруулдаг. Бусдын бичвэрийг өөрийн нэрээр өгөх, хэвлэгдсэн бүтээлийг өөрийнх мэт харуулах нь мөн энэ төрөлд орно."}},
+ {type:"ox",ans:0,src:"교재 84–86쪽",
+  q:{ko:"직접 인용할 때는 원문에 오자나 탈자가 있어도 고치지 않고 그대로 옮긴다.",zh:"直接引用时，即使原文有错字或漏字，也不改正，照原样抄录。",en:"In a direct quotation, you copy the original exactly, even if it contains typos or missing letters.",ru:"При прямом цитировании текст переносят точно, даже если в оригинале есть опечатки или пропуски.",ja:"直接引用するときは、原文に誤字や脱字があっても直さず、そのまま写す。",mn:"Шууд эшлэл хийхдээ эх бичвэрт үсгийн алдаа, дутуу үсэг байсан ч засахгүй, яг хэвээр нь буулгана."},
+  exp:{ko:"인용 부분은 원문과 완전히 일치해야 합니다. 용어·철자법·구두점은 물론 오자·탈자까지 그대로 옮긴 뒤, 원문과 다시 대조해 확인합니다.",zh:"引用部分必须与原文完全一致。不仅是用语、拼写和标点，连错字、漏字也要照原样抄录，然后再与原文核对一遍。",en:"The quoted part must match the original completely. Copy the terms, spelling and punctuation, even typos and missing letters, then check it against the original once more.",ru:"Цитата должна полностью совпадать с оригиналом. Переносите термины, орфографию и пунктуацию, даже опечатки и пропуски, а затем ещё раз сверьте с оригиналом.",ja:"引用部分は原文と完全に一致しなければなりません。用語・表記・句読点はもちろん、誤字・脱字までそのまま写し、原文ともう一度照らし合わせて確認します。",mn:"Эшлэл эх бичвэртэй бүрэн тохирох ёстой. Нэр томьёо, зөв бичих дүрэм, цэг таслалаас гадна үсгийн алдаа, дутуу үсгийг ч яг хэвээр нь буулгаад, эх бичвэртэй дахин тулгаж шалгана."}},
+ {type:"mc",ans:2,src:"교재 84쪽",
+  q:{ko:"원 저술의 의도가 훼손될 여지가 있어 특히 주의해야 하는 인용 방식은?",zh:"哪种引用方式可能损害原著的意图，因此需要特别注意？",en:"Which type of citation needs special care because it may distort the original author's intent?",ru:"Какой способ цитирования требует особой осторожности, потому что может исказить замысел оригинала?",ja:"原著の意図が損なわれるおそれがあり、特に注意が必要な引用の方法はどれですか。",mn:"Эх бүтээлийн санааг гажуудуулж болзошгүй тул онцгой анхаарах ёстой эшлэлийн арга аль нь вэ?"},
+  opts:[
+   {ko:"직접 인용",zh:"直接引用",en:"Direct quotation",ru:"Прямая цитата",ja:"直接引用",mn:"Шууд эшлэл"},
+   {ko:"간접 인용",zh:"间接引用",en:"Indirect quotation",ru:"Косвенное цитирование",ja:"間接引用",mn:"Шууд бус эшлэл"},
+   {ko:"재인용",zh:"转引",en:"Secondary citation",ru:"Цитирование из вторичного источника",ja:"再引用（孫引き）",mn:"Давхар эшлэл"}],
+  exp:{ko:"재인용은 다른 사람이 참조한 저술을 다시 참조하는 방식입니다. 중간에 그 사람의 해석이 섞여 원래 뜻이 달라질 수 있으므로 주의해야 합니다.",zh:"转引是再次参考别人已参考过的著作。由于中间夹杂了别人的解读，原意可能会改变，所以要特别注意。",en:"Secondary citation means citing a work through someone else who cited it. Their interpretation may have changed the original meaning, so be careful.",ru:"При цитировании из вторичного источника вы берёте текст через другого автора, который его уже цитировал. Его интерпретация могла изменить исходный смысл, поэтому нужна осторожность.",ja:"再引用とは、他の人が参照した著作をもう一度参照する方法です。途中の人の解釈が入り、元の意味が変わることがあるので注意が必要です。",mn:"Давхар эшлэл гэдэг нь бусдын иш татсан бүтээлийг дахин иш татах арга юм. Дундах хүний тайлбар холилдож анхны утга өөрчлөгдөж болох тул болгоомжтой байх хэрэгтэй."}},
+ {type:"mc",ans:1,src:"교재 84–86쪽",
+  q:{ko:"인용문이 길 때(두 문장 이상, 4행 이상) 알맞은 표시 방법은?",zh:"引文较长时（两句以上、四行以上），正确的标示方法是？",en:"When a quotation is long (two or more sentences, four or more lines), how should you present it?",ru:"Как оформить длинную цитату (два и более предложения, четыре и более строки)?",ja:"引用文が長いとき（二文以上、四行以上）、正しい示し方はどれですか。",mn:"Эшлэл урт үед (хоёр ба түүнээс дээш өгүүлбэр, дөрөв ба түүнээс дээш мөр) хэрхэн тэмдэглэх вэ?"},
+  opts:[
+   {ko:"평소처럼 큰따옴표로 묶어 본문 안에 쓴다.",zh:"像平常一样用双引号括起来，写在正文里。",en:"Put it in quotation marks inside the paragraph, as usual.",ru:"Как обычно, взять в кавычки и оставить внутри абзаца.",ja:"いつものように引用符でくくり、本文の中に書く。",mn:"Ердийнхөөрөө хашилтад хийж, үндсэн бичвэр дотор бичнэ."},
+   {ko:"따옴표 없이 별도 단락으로 빼고, 위아래 한 줄을 띄우고, 글자를 작게, 한 칸 들여 쓴다.",zh:"不加引号，单独成段；上下各空一行，字号缩小，缩进一格。",en:"Set it apart as its own block with no quotation marks: a blank line above and below, smaller type, indented.",ru:"Без кавычек вынести в отдельный абзац: пустая строка сверху и снизу, шрифт меньше, отступ.",ja:"引用符を付けずに別の段落にし、上下を一行あけ、文字を小さくし、一字下げて書く。",mn:"Хашилтгүйгээр тусдаа догол мөр болгон гаргаж, дээр доор нь нэг мөр зай авч, үсгийг жижиг болгон, нэг зай догол оруулж бичнэ."},
+   {ko:"너무 기니까 중간을 줄여서 짧게 옮긴다.",zh:"因为太长，就把中间删减后简短抄录。",en:"Shorten it by cutting out the middle.",ru:"Сократить, выбросив середину.",ja:"長すぎるので、途中を省いて短く写す。",mn:"Хэт урт тул дундаас нь хасаж, богиносгон буулгана."}],
+  exp:{ko:"인용문이 길면 따옴표를 쓰지 않고 별도의 인용 단락을 만듭니다. 3번처럼 원문을 마음대로 줄이면 안 됩니다. 인용 부분은 원문과 완전히 일치해야 합니다.",zh:"引文较长时，不用引号，而是另起一个引文段落。不能像3那样随意删减原文，引用部分必须与原文完全一致。",en:"A long quotation goes in a separate block without quotation marks. Never shorten the original as in option 3; the quoted part must match the original exactly.",ru:"Длинную цитату оформляют отдельным абзацем без кавычек. Нельзя сокращать оригинал, как в варианте 3: цитата должна точно совпадать с ним.",ja:"引用文が長いときは引用符を使わず、別の引用段落を作ります。3のように原文を勝手に短くしてはいけません。引用部分は原文と完全に一致しなければなりません。",mn:"Урт эшлэлийг хашилтгүйгээр тусдаа догол мөр болгоно. 3 шиг эх бичвэрийг дураараа богиносгож болохгүй; эшлэл эх бичвэртэй яг тохирох ёстой."}},
+ {type:"ox",ans:0,src:"교재 87–89쪽",
+  q:{ko:"본문에 넣으면 자연스럽지 않은 보충 설명은 ‘내용 각주’로 처리한다.",zh:"放进正文会显得不自然的补充说明，用“内容脚注”来处理。",en:"Extra explanations that would read awkwardly in the main text go into a 'content footnote'.",ru:"Дополнительные пояснения, которые неуместны в основном тексте, выносят в «содержательную сноску».",ja:"本文に入れると不自然になる補足説明は「内容脚注」で処理する。",mn:"Үндсэн бичвэрт оруулбал зохимжгүй нэмэлт тайлбарыг «агуулгын зүүлт»-ээр бичнэ."},
+  exp:{ko:"각주에는 두 종류가 있습니다. ‘참고문헌 각주’는 인용하거나 참조한 원문의 출처를 밝히고, ‘내용 각주’는 본문에 넣기 어려운 보충 설명을 처리합니다.",zh:"脚注分两种。“参考文献脚注”注明所引用或参考原文的出处，“内容脚注”处理难以放进正文的补充说明。",en:"There are two kinds of footnotes. A 'reference footnote' gives the source of what you quoted or consulted; a 'content footnote' holds extra explanation that does not fit the main text.",ru:"Сноски бывают двух видов. «Библиографическая сноска» указывает источник цитаты или использованного текста, а «содержательная сноска» содержит дополнительные пояснения, которые не вписываются в основной текст.",ja:"脚注には二種類あります。「参考文献脚注」は引用・参照した原文の出典を示し、「内容脚注」は本文に入れにくい補足説明を扱います。",mn:"Зүүлт хоёр төрөл байдаг. «Ном зүйн зүүлт» нь иш татсан, ашигласан эх бичвэрийн эх сурвалжийг заадаг бол «агуулгын зүүлт» нь үндсэн бичвэрт багтахгүй нэмэлт тайлбарыг бичдэг."}},
+ {type:"mc",ans:3,src:"강의자료 16·20쪽",
+  q:{ko:"AI 활용 기록에 들어가야 할 내용이 아닌 것은?",zh:"下列哪一项不是AI使用记录中应包含的内容？",en:"Which of these does NOT belong in your AI-use record?",ru:"Что из этого НЕ нужно включать в запись об использовании ИИ?",ja:"AI活用記録に含めるべき内容でないものはどれですか。",mn:"Аль нь хиймэл оюун ашигласан тэмдэглэлд орох ёсгүй вэ?"},
+  opts:[
+   {ko:"사용한 도구와 날짜",zh:"使用的工具和日期",en:"The tool you used and the date",ru:"Использованный инструмент и дата",ja:"使ったツールと日付",mn:"Ашигласан хэрэгсэл ба огноо"},
+   {ko:"입력한 프롬프트",zh:"输入的提示词",en:"The prompt you entered",ru:"Введённый запрос (промпт)",ja:"入力したプロンプト",mn:"Оруулсан промпт"},
+   {ko:"생성 결과와 수용·거절의 이유",zh:"生成结果以及采纳或拒绝的理由",en:"The output, and why you accepted or rejected it",ru:"Полученный результат и причины, почему вы его приняли или отклонили",ja:"生成結果と、採用・不採用の理由",mn:"Гарсан үр дүн, түүнийг хүлээн авсан эсвэл татгалзсан шалтгаан"},
+   {ko:"내 이름과 전화번호",zh:"我的姓名和电话号码",en:"My name and phone number",ru:"Моё имя и номер телефона",ja:"自分の名前と電話番号",mn:"Миний нэр, утасны дугаар"}],
+  exp:{ko:"AI 활용 기록에는 도구·날짜·프롬프트·생성 결과·수용과 거절의 이유를 남깁니다. 이름·전화번호 같은 개인정보는 AI에 입력하기 전에 지워야 합니다.",zh:"AI使用记录要写下工具、日期、提示词、生成结果以及采纳或拒绝的理由。姓名、电话号码等个人信息在输入AI之前就应删除。",en:"Your AI-use record includes the tool, date, prompt, output, and why you accepted or rejected it. Personal information such as your name or phone number should be removed before you enter text into the AI.",ru:"В записи об использовании ИИ указывают инструмент, дату, запрос, результат и причины принятия или отклонения. Личные данные, например имя и телефон, нужно удалить ещё до ввода текста в ИИ.",ja:"AI活用記録には、ツール・日付・プロンプト・生成結果・採用と不採用の理由を残します。名前や電話番号などの個人情報は、AIに入力する前に消しておきましょう。",mn:"Хиймэл оюун ашигласан тэмдэглэлд хэрэгсэл, огноо, промпт, гарсан үр дүн, хүлээн авсан эсвэл татгалзсан шалтгааныг бичнэ. Нэр, утасны дугаар зэрэг хувийн мэдээллийг хиймэл оюунд оруулахаасаа өмнө устгах ёстой."}},
+ {type:"ox",ans:1,src:"강의자료 16쪽",
+  q:{ko:"AI가 고쳐 준 문장을 그대로 제출했다면, 그 문장의 사실 오류는 AI의 책임이다.",zh:"如果原样提交了AI修改过的句子，那么句子中的事实错误由AI负责。",en:"If I submit sentences exactly as the AI revised them, any factual errors in them are the AI's responsibility.",ru:"Если я сдаю предложения в том виде, в каком их исправил ИИ, за фактические ошибки в них отвечает ИИ.",ja:"AIが直した文をそのまま提出したなら、その文の事実の誤りはAIの責任である。",mn:"Хиймэл оюуны зассан өгүүлбэрийг шууд өгсөн бол түүн дэх баримтын алдааг хиймэл оюун хариуцна."},
+  exp:{ko:"AI의 사실 오류, 부적절한 표현, 편향은 학생이 직접 검토해야 합니다. AI 사용을 표시했더라도 최종 작성과 제출의 책임은 학생에게 있습니다.",zh:"AI的事实错误、不恰当的表达和偏见，都必须由学生亲自检查。即使标明了使用AI，最终写作和提交的责任仍在学生。",en:"You must check the AI's factual errors, inappropriate wording, and bias yourself. Even if you mark that you used AI, responsibility for the final writing and submission is yours.",ru:"Фактические ошибки, неуместные выражения и предвзятость ИИ студент должен проверять сам. Даже если вы указали, что использовали ИИ, ответственность за итоговый текст и его сдачу лежит на вас.",ja:"AIの事実の誤り、不適切な表現、偏りは学生が自分で確認しなければなりません。AIの使用を明記しても、最終的な作成と提出の責任は学生にあります。",mn:"Хиймэл оюуны баримтын алдаа, зохисгүй хэллэг, өрөөсгөл хандлагыг оюутан өөрөө шалгах ёстой. Хиймэл оюун ашигласнаа тэмдэглэсэн ч эцсийн бичвэр болон түүнийг өгөх хариуцлага оюутанд байна."}}
+];
+
+const KEY="w10-ethics-quiz";
+let S={lang:null,i:0,a:Array(Q.length).fill(null),done:false};
+try{const s=JSON.parse(localStorage.getItem(KEY)||"null");if(s&&Array.isArray(s.a)&&s.a.length===Q.length)S=Object.assign(S,s);}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+
+const L=()=>LANGS.find(x=>x.c===S.lang);
+function tr(o,rep){
+  const f=s=>rep?s.replace("{n}",rep):s;
+  let h='<span class="ko">'+f(o.ko)+'</span>';
+  const l=L();
+  if(l&&o[l.c])h+='<span class="tr" lang="'+l.h+'">'+f(o[l.c])+'</span>';
+  return h;
+}
+const isOk=k=>S.a[k]!==null&&S.a[k]===Q[k].ans;
+const firstOpen=()=>{const k=S.a.indexOf(null);return k<0?Q.length:k};
+function ansLabel(q){
+  if(q.type==="ox")return q.ans===0?{ko:"O · "+T.o.ko,zh:"O · "+T.o.zh,en:"O · "+T.o.en,ru:"O · "+T.o.ru,ja:"O · "+T.o.ja,mn:"O · "+T.o.mn}:{ko:"X · "+T.x.ko,zh:"X · "+T.x.zh,en:"X · "+T.x.en,ru:"X · "+T.x.ru,ja:"X · "+T.x.ja,mn:"X · "+T.x.mn};
+  const o=q.opts[q.ans],r={};for(const k in o)r[k]=(q.ans+1)+". "+o[k];return r;
+}
+function inline(o){const l=L();return o.ko+(l&&o[l.c]?' <span lang="'+l.h+'" style="color:var(--sub);font-weight:500">('+o[l.c]+')</span>':'')}
+
+function renderLangs(){
+  const el=document.getElementById("langs");
+  el.innerHTML='<button class="lang" id="lang-none" data-lang="" aria-pressed="'+(!S.lang)+'">한국어만</button>'+
+    LANGS.map(l=>'<button class="lang" id="lang-'+l.c+'" lang="'+l.h+'" data-lang="'+l.c+'" aria-pressed="'+(S.lang===l.c)+'">'+l.l+'</button>').join("");
+  const h=document.getElementById("heroTr"),l=L();
+  h.textContent=l?T.hero[l.c]:"";h.lang=l?l.h:"";h.hidden=!l;
+}
+function renderProg(){
+  const fo=firstOpen();
+  document.getElementById("prog").innerHTML=Q.map((q,k)=>{
+    const cls=["seg"];if(S.a[k]!==null)cls.push(isOk(k)?"ok":"no");if(!S.done&&k===S.i)cls.push("cur");
+    return '<button class="'+cls.join(" ")+'" data-go="'+k+'"'+(k>fo?" disabled":"")+' aria-label="'+(k+1)+'번 문제">'+(k+1)+'</button>';
+  }).join("");
+}
+function qView(){
+  const k=S.i,q=Q[k],a=S.a[k],done=a!==null,ok=done&&a===q.ans;
+  let h='<article class="card"><div class="qhead"><span class="qnum">Q'+(k+1)+'</span><span class="chip soft">'+(q.type==="ox"?T.ox.ko:T.mc.ko)+'</span><span class="count">'+(k+1)+' / '+Q.length+'</span></div>';
+  h+='<h2 class="qtext">'+tr(q.q)+'</h2>';
+  const st=v=>!done?"":(v===q.ans?" is-right":(v===a?" is-wrong":" is-dim"));
+  if(q.type==="ox"){
+    h+='<div class="oxrow">'+[0,1].map(v=>'<button class="ox'+(v?" x":"")+st(v)+'" id="q'+k+'-'+v+'" data-pick="'+v+'"'+(done?" disabled":"")+'><span class="gl">'+(v?"X":"O")+'</span><span class="lab">'+tr(v?T.x:T.o)+'</span></button>').join("")+'</div>';
+  }else{
+    h+='<div class="opts">'+q.opts.map((o,v)=>'<button class="opt'+st(v)+'" id="q'+k+'-'+v+'" data-pick="'+v+'"'+(done?" disabled":"")+'><span class="bd">'+(v+1)+'</span><span class="tx">'+tr(o)+'</span></button>').join("")+'</div>';
+  }
+  if(done){
+    h+='<div class="fb '+(ok?"ok":"no")+'" role="status"><p class="verdict"><span class="mk" aria-hidden="true">'+(ok?"✓":"✕")+'</span><span>'+tr(ok?T.right:T.wrong)+'</span></p>';
+    if(!ok)h+='<p class="ans"><b>'+T.answer.ko+'</b> '+inline(ansLabel(q))+'</p>';
+    h+='<div class="exp"><div class="exp-h"><span class="chip cream">'+T.exp.ko+(L()?' · <span lang="'+L().h+'">'+T.exp[L().c]+'</span>':'')+'</span><span class="src">'+q.src+'</span></div><p>'+tr(q.exp)+'</p></div></div>';
+  }
+  h+='<div class="nav">';
+  if(k>0)h+='<button class="btn ghost" id="btn-prev" data-act="prev">'+T.prev.ko+'</button>';
+  if(done){
+    const last=k===Q.length-1||firstOpen()===Q.length&&k===Q.length-1;
+    const allDone=firstOpen()===Q.length;
+    if(k<Q.length-1)h+='<button class="btn primary" id="btn-next" data-act="next">'+tr(T.next)+'</button>';
+    else if(allDone)h+='<button class="btn primary" id="btn-result" data-act="result">'+tr(T.result)+'</button>';
+  }
+  h+='</div>';
+  if(!done)h+='<p class="hint">'+inline(T.pick)+'</p>';
+  return h+'</article>';
+}
+function rView(){
+  const n=Q.filter((q,k)=>isOk(k)).length;
+  const msg=n===Q.length?T.m10:(n>=7?T.m7:T.m0);
+  let h='<section class="card result"><span class="chip gold">Result</span>';
+  h+='<p class="score"><b>'+n+'</b><span>/ '+Q.length+'</span></p>';
+  h+='<p class="r-line">'+tr(T.got,String(n))+'</p><p class="r-msg">'+tr(msg)+'</p>';
+  const wrong=Q.map((q,k)=>k).filter(k=>!isOk(k));
+  if(wrong.length){
+    h+='<div class="review"><h3>'+inline(T.review)+'</h3><ol class="rv">'+wrong.map(k=>'<li><span class="n">Q'+(k+1)+'</span><div class="c">'+tr(Q[k].q)+'<p class="ans"><b>'+T.answer.ko+'</b> '+inline(ansLabel(Q[k]))+'</p></div><button id="rv-'+k+'" data-go="'+k+'">'+T.see.ko+'</button></li>').join("")+'</ol></div>';
+  }else{
+    h+='<div class="allok">'+tr(T.allok)+'</div>';
+  }
+  h+='<div class="nav"><button class="btn primary" id="btn-retry" data-act="retry">'+tr(T.retry)+'</button></div></section>';
+  return h;
+}
+function render(focusTop){
+  renderLangs();renderProg();
+  document.getElementById("app").innerHTML=S.done?rView():qView();
+  if(focusTop){const p=document.getElementById("prog");const y=p.getBoundingClientRect().top+window.scrollY-70;if(window.scrollY>y)window.scrollTo({top:y,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});}
+}
+
+document.getElementById("langs").addEventListener("click",e=>{
+  const b=e.target.closest("[data-lang]");if(!b)return;
+  S.lang=b.dataset.lang||null;save();render(false);
+});
+document.addEventListener("click",e=>{
+  const pick=e.target.closest("[data-pick]");
+  if(pick&&!pick.disabled){S.a[S.i]=Number(pick.dataset.pick);save();render(false);
+    const fb=document.querySelector(".fb");if(fb&&fb.getBoundingClientRect().top>window.innerHeight-120)fb.scrollIntoView({block:"nearest",behavior:"smooth"});return;}
+  const go=e.target.closest("[data-go]");
+  if(go&&!go.disabled){S.i=Number(go.dataset.go);S.done=false;save();render(true);return;}
+  const act=e.target.closest("[data-act]");if(!act)return;
+  const a=act.dataset.act;
+  if(a==="next"){S.i=Math.min(S.i+1,Q.length-1);}
+  else if(a==="prev"){S.i=Math.max(S.i-1,0);}
+  else if(a==="result"){S.done=true;}
+  else if(a==="retry"){S.a=Array(Q.length).fill(null);S.i=0;S.done=false;}
+  save();render(true);
+});
+render(false);
+</script>
+</body>
+</html>
