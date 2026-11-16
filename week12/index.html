@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>12주차 퀴즈 · 학술적 글쓰기 2</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one narrow reading column, lecture header strip on top, sticky language bar, one question card at a time */
+:root{
+  --bg:#FFFFFF; --surface:#F1F5F9; --line:#E2E8F0;
+  --ink:#0E1116; --body:#2F3844; --sub:#6E7887;
+  --blue:#1D52FC; --blue-deep:#1136C7; --blue-soft:#E8EDFE; --blue-line:#D5DEFC; --on-blue:#FFFFFF;
+  --gold:#D9A445; --gold-deep:#B8862E; --cream:#FDF6E7; --cream-line:#F0DFB8;
+  --rose:#FDECEF; --rose-line:#F6D6DD; --rose-ink:#8E3450;
+  --bar-a:#E9AE48; --bar-b:#3E5E86; --strip-ink:#0E1116;
+  --glow:rgba(29,82,252,.22);
+  --shadow:0 6px 22px rgba(20,40,90,.07);
+  --f-disp:"Black Han Sans","Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-body:"IBM Plex Sans KR","Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1220; --surface:#161C2E; --line:#273049;
+    --ink:#EEF1F8; --body:#CBD2E0; --sub:#8F99AE;
+    --blue:#5B82FF; --blue-deep:#3E66F2; --blue-soft:#1A2452; --blue-line:#2D3C7A; --on-blue:#FFFFFF;
+    --gold:#E0B055; --gold-deep:#E8BF6A; --cream:#231D12; --cream-line:#4A3C1E;
+    --rose:#2B1820; --rose-line:#5A2A3C; --rose-ink:#F2A9BE;
+    --glow:rgba(91,130,255,.20); --shadow:0 6px 22px rgba(0,0,0,.35);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1220; --surface:#161C2E; --line:#273049;
+  --ink:#EEF1F8; --body:#CBD2E0; --sub:#8F99AE;
+  --blue:#5B82FF; --blue-deep:#3E66F2; --blue-soft:#1A2452; --blue-line:#2D3C7A; --on-blue:#FFFFFF;
+  --gold:#E0B055; --gold-deep:#E8BF6A; --cream:#231D12; --cream-line:#4A3C1E;
+  --rose:#2B1820; --rose-line:#5A2A3C; --rose-ink:#F2A9BE;
+  --glow:rgba(91,130,255,.20); --shadow:0 6px 22px rgba(0,0,0,.35);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--body);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+
+/* lecture header strip */
+.strip{display:flex;align-items:center;height:28px;background:linear-gradient(90deg,var(--bar-a),var(--bar-b));color:var(--strip-ink);font-weight:700;font-size:13px}
+.strip .no{background:#0E1116;color:#fff;height:100%;display:grid;place-items:center;padding-inline:max(12px,env(safe-area-inset-left,0px)) 12px;font-variant-numeric:tabular-nums}
+.strip .lab{padding-inline:12px;white-space:nowrap}
+.strip .right{margin-left:auto;padding-right:max(16px,env(safe-area-inset-right,0px));color:#fff;font-weight:500;font-size:12px;white-space:nowrap}
+@media (max-width:520px){.strip .right{display:none}}
+
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding-block:28px 0}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;
+  background:linear-gradient(90deg,transparent 52%,var(--glow) 72%,transparent 80%,var(--glow) 93%,transparent)}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 12px;font-size:12.5px;font-weight:700;letter-spacing:.02em;white-space:nowrap}
+.chip.gold{background:var(--gold);color:#1B1406}
+.chip.soft{background:var(--blue-soft);color:var(--blue-deep)}
+.chip.cream{background:var(--cream);color:var(--gold-deep);border:1px solid var(--cream-line)}
+:root[data-theme="dark"] .chip.soft{color:var(--ink)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .chip.soft{color:var(--ink)}}
+h1{font-family:var(--f-disp);font-weight:400;font-size:clamp(2.3rem,7vw,3.3rem);line-height:1.15;color:var(--ink);margin:12px 0 0;letter-spacing:.01em;text-wrap:balance}
+h1 em{font-style:normal;color:var(--blue)}
+.rule{height:3px;margin-top:14px;background:linear-gradient(90deg,var(--gold),#6C7A8E)}
+.meta{display:flex;flex-wrap:wrap;gap:4px 14px;margin:12px 0 0;color:var(--sub);font-size:14px}
+.meta b{color:var(--blue);font-weight:700}
+.hero .sub-tr{display:block;color:var(--sub);font-size:13px;margin-top:2px}
+
+/* sticky language bar */
+.langbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-top:20px}
+.langbar .wrap{display:flex;align-items:center;gap:10px;padding-block:10px}
+.langbar .lb{font-size:12.5px;font-weight:700;color:var(--sub);white-space:nowrap}
+.langs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;min-width:0;padding:2px}
+.langs::-webkit-scrollbar{display:none}
+.lang{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 13px;font-size:14px;font-weight:600;cursor:pointer;color:var(--body);min-height:36px}
+.lang[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:var(--on-blue)}
+
+/* progress */
+.prog{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;margin:20px 0 14px}
+.seg{height:30px;border-radius:8px;border:1px solid var(--line);background:var(--surface);font-size:12px;font-weight:700;color:var(--sub);cursor:pointer;font-variant-numeric:tabular-nums;padding:0}
+.seg:disabled{cursor:default;opacity:.55}
+.seg.ok{background:var(--blue);border-color:var(--blue);color:var(--on-blue)}
+.seg.no{background:var(--rose);border-color:var(--rose-line);color:var(--rose-ink)}
+.seg.cur{outline:2px solid var(--ink);outline-offset:1px}
+
+/* question card */
+.card{background:var(--bg);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:22px 20px 20px}
+.qhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.qnum{width:34px;height:34px;border-radius:50%;background:var(--blue);color:var(--on-blue);display:grid;place-items:center;font-weight:700;font-size:14px;flex:none;font-variant-numeric:tabular-nums}
+.count{margin-left:auto;color:var(--sub);font-size:13px;font-variant-numeric:tabular-nums}
+.qtext{font-size:clamp(1.12rem,3.6vw,1.3rem);font-weight:700;color:var(--ink);line-height:1.55;margin:16px 0 18px;text-wrap:pretty}
+.ko{display:block}
+.tr{display:block;font-size:.8em;font-weight:500;color:var(--sub);line-height:1.5;margin-top:3px}
+
+.opts{display:grid;gap:10px}
+.opt{display:flex;align-items:flex-start;gap:12px;text-align:left;width:100%;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:13px 14px;cursor:pointer;min-height:52px;transition:border-color .15s,background .15s}
+.opt:hover:not(:disabled){border-color:var(--blue-line);background:var(--blue-soft)}
+.opt .bd{width:26px;height:26px;border-radius:50%;flex:none;display:grid;place-items:center;background:var(--bg);border:1.5px solid var(--blue-line);color:var(--blue);font-weight:700;font-size:13px;margin-top:1px}
+.opt .tx{min-width:0;font-size:15.5px;color:var(--body);font-weight:500}
+
+.oxrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ox{display:flex;flex-direction:column;align-items:center;gap:2px;background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:16px 8px 14px;cursor:pointer;transition:border-color .15s,background .15s}
+.ox:hover:not(:disabled){border-color:var(--blue-line);background:var(--blue-soft)}
+.ox .gl{font-family:var(--f-disp);font-size:3rem;line-height:1;color:var(--blue)}
+.ox.x .gl{color:var(--rose-ink)}
+.ox .lab{font-size:14.5px;font-weight:600;color:var(--body);text-align:center}
+
+.opt:disabled,.ox:disabled{cursor:default}
+.is-right{background:var(--blue-soft)!important;border-color:var(--blue)!important}
+.is-right .bd{background:var(--blue);border-color:var(--blue);color:var(--on-blue)}
+.is-wrong{background:var(--rose)!important;border-color:var(--rose-ink)!important}
+.is-wrong .bd{background:var(--rose-ink);border-color:var(--rose-ink);color:var(--bg)}
+.is-dim{opacity:.5}
+
+/* feedback */
+.fb{margin-top:18px;display:grid;gap:10px}
+.verdict{display:flex;align-items:flex-start;gap:10px;font-weight:700;font-size:16.5px;margin:0;color:var(--ink)}
+.verdict .mk{width:28px;height:28px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:15px;color:#fff}
+.fb.ok .mk{background:var(--blue)}
+.fb.no .mk{background:var(--rose-ink);color:var(--bg)}
+.ans{font-size:14.5px;color:var(--body);margin:0}
+.ans b{color:var(--blue-deep)}
+:root[data-theme="dark"] .ans b{color:var(--blue)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ans b{color:var(--blue)}}
+.exp{background:var(--cream);border:1px solid var(--cream-line);border-radius:14px;padding:14px 16px}
+.exp-h{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.exp-h .src{margin-left:auto;font-size:12.5px;color:var(--gold-deep);font-weight:600}
+.exp p{margin:0;font-size:15px;color:var(--body)}
+
+.nav{display:flex;gap:10px;margin-top:18px}
+.btn{border:0;border-radius:999px;padding:12px 22px;font-weight:700;font-size:15.5px;cursor:pointer;min-height:48px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.3}
+.btn .tr{color:inherit;opacity:.8;margin-top:1px}
+.btn.primary{background:var(--blue);color:var(--on-blue);margin-left:auto;min-width:160px}
+.btn.primary:hover{background:var(--blue-deep)}
+.btn.ghost{background:transparent;color:var(--sub);border:1.5px solid var(--line)}
+.hint{color:var(--sub);font-size:13.5px;margin:14px 0 0;text-align:center}
+
+/* result */
+.result{text-align:left}
+.score{display:flex;align-items:baseline;gap:8px;margin:14px 0 4px}
+.score b{font-family:var(--f-disp);font-weight:400;font-size:4.5rem;line-height:1;color:var(--blue);font-variant-numeric:tabular-nums}
+.score span{font-family:var(--f-disp);font-size:1.8rem;color:var(--sub)}
+.r-line{font-size:17px;font-weight:700;color:var(--ink);margin:6px 0 0}
+.r-msg{margin:6px 0 0;font-size:15.5px}
+.review{margin-top:22px;border-top:1px solid var(--line);padding-top:16px}
+.review h3{font-size:15px;color:var(--ink);margin:0 0 10px}
+.rv{display:grid;gap:10px;list-style:none;padding:0;margin:0}
+.rv li{display:flex;gap:12px;align-items:flex-start;background:var(--rose);border:1px solid var(--rose-line);border-radius:12px;padding:12px 14px}
+.rv .n{font-weight:700;color:var(--rose-ink);flex:none;font-variant-numeric:tabular-nums}
+.rv .c{min-width:0;flex:1;font-size:14.5px}
+.rv .c .ans{margin-top:4px;font-size:13.5px}
+.rv button{flex:none;border:1px solid var(--rose-line);background:var(--bg);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;cursor:pointer;color:var(--rose-ink)}
+.allok{background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:12px;padding:14px 16px;margin-top:20px;color:var(--ink);font-weight:600}
+
+footer{margin:28px 0 36px;color:var(--sub);font-size:12.5px;line-height:1.6}
+footer b{color:var(--body);font-weight:700}
+
+@media (max-width:440px){
+  .card{padding:18px 15px 16px;border-radius:16px}
+  .seg{height:26px;font-size:11px;border-radius:6px}
+  .prog{gap:4px}
+  .btn.primary{min-width:0;flex:1}
+  .rv li{flex-wrap:wrap}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media (prefers-reduced-motion:no-preference){.card{animation:rise .25s ease-out both}@keyframes rise{from{transform:translateY(6px)}to{transform:none}}}
+</style>
+</head>
+<body>
+
+<div class="strip" aria-hidden="true">
+  <span class="no">12</span>
+  <span class="lab">Week 12 · 학술적 글쓰기 2</span>
+  <span class="right">AI 시대 쓰기의 힘 · 외국인 학부생을 위한 글쓰기</span>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="chip gold">Week 12 Quiz</span>
+    <h1>학술적 <em>글쓰기 2</em></h1>
+    <div class="rule"></div>
+    <p class="meta"><span>made by 유환일 (한양대학교 교양국어위원회)</span></p>
+    <p class="meta"><span><b>10문항</b> · O/X 5개 · 선택 문제 5개</span><span>약 5분</span><span>교재 101–113쪽</span></p>
+    <span class="sub-tr" id="heroTr"></span>
+  </div>
+</header>
+
+<nav class="langbar" aria-label="번역 언어">
+  <div class="wrap">
+    <span class="lb">번역</span>
+    <div class="langs" id="langs"></div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <div class="prog" id="prog" aria-label="진행 상황"></div>
+  <div id="app"></div>
+  <footer>
+    <b>Made by</b> 유환일 (한양대학교 교양국어위원회)<br>
+    <b>교재 근거</b> 한양대학교 교양국어교육위원회 편, 『이것이 한국어다: 글쓰기』(전면개정판), 101–113쪽 · 12주차 강의자료<br>
+    결과는 이 기기에만 저장되며 교수자에게 전송되지 않습니다.
+  </footer>
+</main>
+
+<script>
+const LANGS=[
+  {c:"zh",h:"zh-Hans",l:"中文"},
+  {c:"en",h:"en",l:"English"},
+  {c:"ru",h:"ru",l:"Русский"},
+  {c:"ja",h:"ja",l:"日本語"},
+  {c:"mn",h:"mn",l:"Монгол"}
+];
+
+const T={
+  koOnly:{ko:"한국어만"},
+  hero:{zh:"第12周测验 · 学术写作2 · 10题 · 约5分钟",en:"Week 12 quiz · Academic Writing 2 · 10 questions · about 5 minutes",ru:"Тест 12-й недели · Академическое письмо 2 · 10 вопросов · около 5 минут",ja:"第12週 クイズ · 学術的な文章2 · 10問 · 約5分",mn:"12 дахь долоо хоногийн сорил · Эрдэм шинжилгээний бичиг 2 · 10 асуулт · 5 минут орчим"},
+  ox:{ko:"O/X 퀴즈",zh:"判断题",en:"True or false",ru:"Верно или неверно",ja:"○×問題",mn:"Зөв/буруу"},
+  mc:{ko:"선택 문제",zh:"选择题",en:"Multiple choice",ru:"Выбор ответа",ja:"選択問題",mn:"Сонгох асуулт"},
+  o:{ko:"맞다",zh:"对",en:"True",ru:"Верно",ja:"正しい",mn:"Зөв"},
+  x:{ko:"틀리다",zh:"错",en:"False",ru:"Неверно",ja:"間違い",mn:"Буруу"},
+  right:{ko:"정답입니다!",zh:"回答正确！",en:"Correct!",ru:"Верно!",ja:"正解です！",mn:"Зөв байна!"},
+  wrong:{ko:"아쉬워요. 해설을 읽어 봅시다.",zh:"很遗憾。来看看解析吧。",en:"Not quite. Let's read the explanation.",ru:"Не совсем. Прочитайте пояснение.",ja:"残念！解説を読んでみましょう。",mn:"Харамсалтай. Тайлбарыг уншицгаая."},
+  answer:{ko:"정답",zh:"正确答案",en:"Answer",ru:"Ответ",ja:"正解",mn:"Зөв хариулт"},
+  exp:{ko:"해설",zh:"解析",en:"Explanation",ru:"Пояснение",ja:"解説",mn:"Тайлбар"},
+  next:{ko:"다음 문제",zh:"下一题",en:"Next question",ru:"Следующий вопрос",ja:"次の問題",mn:"Дараагийн асуулт"},
+  prev:{ko:"이전",zh:"上一题",en:"Back",ru:"Назад",ja:"前へ",mn:"Өмнөх"},
+  result:{ko:"결과 보기",zh:"查看结果",en:"See results",ru:"Посмотреть результат",ja:"結果を見る",mn:"Үр дүнг харах"},
+  retry:{ko:"다시 풀기",zh:"重新作答",en:"Try again",ru:"Пройти снова",ja:"もう一度解く",mn:"Дахин бөглөх"},
+  pick:{ko:"답을 하나 고르세요.",zh:"请选择一个答案。",en:"Choose one answer.",ru:"Выберите один ответ.",ja:"答えを一つ選んでください。",mn:"Нэг хариулт сонгоно уу."},
+  got:{ko:"10문제 중 {n}문제를 맞혔습니다.",zh:"10题中答对了{n}题。",en:"You got {n} out of 10.",ru:"Правильных ответов: {n} из 10.",ja:"10問中{n}問正解です。",mn:"10 асуултаас {n}-д зөв хариуллаа."},
+  m10:{ko:"모두 맞혔습니다. 12주차 내용을 잘 기억하고 있어요.",zh:"全部答对！你很好地掌握了第12周的内容。",en:"Perfect! You remember Week 12 well.",ru:"Отлично! Вы хорошо помните материал 12-й недели.",ja:"全問正解！第12週の内容をよく覚えています。",mn:"Бүгд зөв! 12 дахь долоо хоногийн хичээлийг сайн санаж байна."},
+  m7:{ko:"잘했어요. 틀린 문제의 해설만 다시 읽어 보세요.",zh:"做得好。请再读一下答错题目的解析。",en:"Well done. Reread the explanations for the ones you missed.",ru:"Хорошо. Перечитайте пояснения к вопросам с ошибками.",ja:"よくできました。間違えた問題の解説をもう一度読んでみましょう。",mn:"Сайн байна. Алдсан асуултынхаа тайлбарыг дахин уншаарай."},
+  m0:{ko:"교재 101–113쪽을 다시 보고 한 번 더 풀어 봅시다.",zh:"请再看一遍教材第101–113页，然后再做一次。",en:"Review pages 101–113 of the textbook and try once more.",ru:"Просмотрите ещё раз с. 101–113 учебника и попробуйте снова.",ja:"教科書101〜113ページをもう一度見て、再挑戦しましょう。",mn:"Сурах бичгийн 101–113-р хуудсыг дахин үзээд, дахин оролдоорой."},
+  review:{ko:"다시 볼 문제",zh:"需要复习的题目",en:"Questions to review",ru:"Вопросы для повторения",ja:"見直す問題",mn:"Дахин харах асуултууд"},
+  see:{ko:"해설 보기",zh:"看解析",en:"View",ru:"Открыть",ja:"解説を見る",mn:"Харах"},
+  allok:{ko:"틀린 문제가 없습니다. 내 보고서 초고의 본론이 하나의 논증 구조로 일관되는지 확인해 봅시다.",zh:"没有答错的题。请检查一下自己报告初稿的正文是否始终使用同一种论证结构。",en:"No mistakes. Now check whether the body of your report draft follows one argument structure consistently.",ru:"Ошибок нет. Проверьте, выдержана ли основная часть вашего черновика в одной структуре аргументации.",ja:"間違えた問題はありません。自分のレポート草稿の本論が一つの論証構造で一貫しているか確かめてみましょう。",mn:"Алдаа алга. Илтгэлийнхээ ноорогийн үндсэн хэсэг нэг үндэслэлийн бүтцийг тууштай баримталсан эсэхийг шалгаарай."}
+};
+
+const Q=[
+ {type:"ox",ans:0,src:"교재 101–103쪽",
+  q:{ko:"인용은 꼭 필요한 자료에 한해, 검증된 견해를 인용하는 것이 좋다.",zh:"引用时，最好只限于确实需要的资料，并引用经过验证的观点。",en:"It is best to quote only material you really need, and only views that have been verified.",ru:"Лучше цитировать только действительно нужные материалы и только проверенные мнения.",ja:"引用は本当に必要な資料に限り、検証された見解を引用するのがよい。",mn:"Зөвхөн үнэхээр хэрэгтэй материалаас, батлагдсан үзэл бодлыг иш татах нь зүйтэй."},
+  exp:{ko:"인용을 너무 많이 하면 보고서의 독창성이 줄어듭니다. 그래서 꼭 필요한 자료만, 검증된 견해를 골라 인용합니다.",zh:"引用过多会降低报告的独创性。所以只选择确实需要的资料，引用经过验证的观点。",en:"Too many quotations reduce the originality of your report. So choose only the material you need and quote verified views.",ru:"Если цитат слишком много, оригинальность доклада снижается. Поэтому берите только нужные материалы и цитируйте проверенные мнения.",ja:"引用が多すぎると、レポートの独創性が下がります。だから本当に必要な資料だけを選び、検証された見解を引用します。",mn:"Хэт их иш татвал илтгэлийн өвөрмөц байдал буурдаг. Тиймээс зөвхөн хэрэгтэй материалаа сонгож, батлагдсан үзлийг иш татна."}},
+ {type:"mc",ans:2,src:"교재 101–103쪽",
+  q:{ko:"자료 탐색에서 ‘자의적인 해석이나 지나치게 특이한 예는 가능하면 배제한다’는 원칙은 무엇에 해당하는가?",zh:"查找资料时，“尽量排除主观随意的解释或过于特殊的例子”这一原则属于哪一项？",en:"In source search, the rule 'avoid arbitrary interpretations and overly unusual examples' belongs to which principle?",ru:"К какому принципу поиска материалов относится правило «по возможности избегать произвольных толкований и слишком необычных примеров»?",ja:"資料探しで「恣意的な解釈や特異すぎる例はなるべく除く」という原則は、どれに当たりますか。",mn:"Материал хайхдаа «дур зоргийн тайлбар, хэт онцгой жишээг аль болох хасах» зарчим аль нь вэ?"},
+  opts:[
+   {ko:"통일성",zh:"统一性",en:"Unity",ru:"Единство",ja:"統一性",mn:"Нэгдмэл байдал"},
+   {ko:"구체성",zh:"具体性",en:"Concreteness",ru:"Конкретность",ja:"具体性",mn:"Тодорхой байдал"},
+   {ko:"보편성",zh:"普遍性",en:"Universality",ru:"Универсальность",ja:"普遍性",mn:"Нийтлэг байдал"}],
+  exp:{ko:"자료는 구체적이어야 하지만, 지나치게 특이해서 보편성을 잃으면 독자의 공감을 얻을 수 없습니다. 통일성은 논제와 관계없는 자료를 빼는 것, 구체성은 독창적이고 구체적인 자료를 쓰는 것입니다.",zh:"资料应当具体，但如果过于特殊而失去普遍性，就无法引起读者共鸣。统一性是指删去与论题无关的资料，具体性是指使用独创而具体的资料。",en:"Sources should be concrete, but if they are so unusual that they lose universality, readers will not relate to them. Unity means leaving out material unrelated to the topic; concreteness means using original, specific material.",ru:"Материалы должны быть конкретными, но если они настолько необычны, что теряют универсальность, читатель не откликнется. Единство — это удаление материалов, не связанных с темой; конкретность — использование оригинальных и точных материалов.",ja:"資料は具体的であるべきですが、特異すぎて普遍性を失うと読者の共感を得られません。統一性は論題と関係のない資料を除くこと、具体性は独創的で具体的な資料を使うことです。",mn:"Материал тодорхой байх ёстой ч хэт онцгой болж нийтлэг шинжээ алдвал уншигчийн сэтгэлд хүрэхгүй. Нэгдмэл байдал нь сэдэвтэй холбоогүй материалыг хасах, тодорхой байдал нь өвөрмөц, нарийн материал ашиглах юм."}},
+ {type:"ox",ans:1,src:"교재 105쪽",
+  q:{ko:"서론에서 연구 결과를 모두 자세히 말해 주면 독자가 편하므로 좋은 서론이다.",zh:"在引言里把研究结果全部详细说出来，读者会更方便，所以这是好的引言。",en:"Telling all the results in detail in the introduction is convenient for readers, so it makes a good introduction.",ru:"Если во введении подробно рассказать все результаты, читателю будет удобно, поэтому это хорошее введение.",ja:"序論で研究結果をすべて詳しく述べると読者が楽なので、よい序論である。",mn:"Удиртгалд судалгааны үр дүнг бүгдийг нь дэлгэрэнгүй хэлбэл уншигчид хялбар тул сайн удиртгал болно."},
+  exp:{ko:"서론은 예고편이지 본편이 아닙니다. 서론에는 문제 제기, 선행 연구 검토와 비판, 연구 범위와 방법론까지만 쓰고, 결과는 본론과 결론에서 근거와 함께 제시합니다.",zh:"引言是预告片，不是正片。引言只写问题的提出、先行研究的回顾与批评、研究范围与方法；研究结果要在正文和结论中连同依据一起提出。",en:"The introduction is a trailer, not the movie. It covers only the problem, a review and critique of previous research, and the scope and method. Results come in the body and conclusion, with evidence.",ru:"Введение — это анонс, а не сам фильм. Во введении пишут только постановку проблемы, обзор и критику предыдущих исследований, рамки и метод. Результаты приводят в основной части и заключении вместе с доводами.",ja:"序論は予告編であって本編ではありません。序論には問題提起、先行研究の検討と批判、研究の範囲と方法までを書き、結果は本論と結論で根拠とともに示します。",mn:"Удиртгал бол киноны танилцуулга болохоос кино өөрөө биш. Удиртгалд зөвхөн асуудал дэвшүүлэх, өмнөх судалгааг тоймлон шүүмжлэх, судалгааны хүрээ ба аргыг бичнэ. Үр дүнг үндсэн хэсэг ба дүгнэлтэд үндэслэлтэй нь гаргана."}},
+ {type:"mc",ans:3,src:"교재 105쪽",
+  q:{ko:"서론에 써야 할 세 가지 요소가 아닌 것은?",zh:"下列哪一项不是引言应写的三个要素？",en:"Which is NOT one of the three elements of an introduction?",ru:"Что НЕ входит в три элемента введения?",ja:"序論に書くべき三つの要素でないものはどれですか。",mn:"Удиртгалд бичих гурван элементэд аль нь ордоггүй вэ?"},
+  opts:[
+   {ko:"문제 제기",zh:"提出问题",en:"Raising the problem",ru:"Постановка проблемы",ja:"問題提起",mn:"Асуудал дэвшүүлэх"},
+   {ko:"선행 연구 검토와 비판",zh:"先行研究的回顾与批评",en:"Review and critique of previous research",ru:"Обзор и критика предыдущих исследований",ja:"先行研究の検討と批判",mn:"Өмнөх судалгааг тоймлон шүүмжлэх"},
+   {ko:"연구 범위와 방법론",zh:"研究范围与方法",en:"Scope and method",ru:"Рамки и метод исследования",ja:"研究の範囲と方法論",mn:"Судалгааны хүрээ ба арга зүй"},
+   {ko:"연구의 성과와 한계",zh:"研究的成果与局限",en:"Achievements and limitations of the study",ru:"Результаты и ограничения исследования",ja:"研究の成果と限界",mn:"Судалгааны ололт ба хязгаарлалт"}],
+  exp:{ko:"연구의 성과와 한계는 결론에 씁니다. 서론의 세 요소는 문제 제기, 선행 연구 검토와 비판, 연구 범위와 방법론입니다.",zh:"研究的成果与局限写在结论里。引言的三个要素是：提出问题、先行研究的回顾与批评、研究范围与方法。",en:"Achievements and limitations go in the conclusion. The three elements of an introduction are: raising the problem, reviewing and critiquing previous research, and stating the scope and method.",ru:"Результаты и ограничения пишут в заключении. Три элемента введения: постановка проблемы, обзор и критика предыдущих исследований, рамки и метод.",ja:"研究の成果と限界は結論に書きます。序論の三要素は、問題提起、先行研究の検討と批判、研究の範囲と方法論です。",mn:"Судалгааны ололт ба хязгаарлалтыг дүгнэлтэд бичнэ. Удиртгалын гурван элемент нь асуудал дэвшүүлэх, өмнөх судалгааг тоймлон шүүмжлэх, судалгааны хүрээ ба арга юм."}},
+ {type:"mc",ans:2,src:"교재 105쪽",
+  q:{ko:"“기존의 논의는 ~한 한계를 지닌다.”라는 문장은 서론의 어느 요소에서 쓰는가?",zh:"“现有的讨论存在~的局限。”这个句子用于引言的哪个要素？",en:"In which part of the introduction would you write 'Existing discussions have the limitation that ~'?",ru:"В какой части введения пишут фразу «Существующие исследования имеют ограничение: ~»?",ja:"「既存の議論は〜という限界を持つ。」という文は、序論のどの要素で使いますか。",mn:"«Өмнөх хэлэлцүүлэг ~ гэсэн хязгаарлалттай.» гэсэн өгүүлбэрийг удиртгалын аль хэсэгт бичих вэ?"},
+  opts:[
+   {ko:"문제 제기",zh:"提出问题",en:"Raising the problem",ru:"Постановка проблемы",ja:"問題提起",mn:"Асуудал дэвшүүлэх"},
+   {ko:"연구 범위와 방법론",zh:"研究范围与方法",en:"Scope and method",ru:"Рамки и метод исследования",ja:"研究の範囲と方法論",mn:"Судалгааны хүрээ ба арга зүй"},
+   {ko:"선행 연구 검토와 비판",zh:"先行研究的回顾与批评",en:"Review and critique of previous research",ru:"Обзор и критика предыдущих исследований",ja:"先行研究の検討と批判",mn:"Өмнөх судалгааг тоймлон шүүмжлэх"}],
+  exp:{ko:"선행 연구를 요약해 소개한 뒤, 그 한계를 짚어야 왜 이 문제를 계속 연구하는지 독자를 설득할 수 있습니다. 문제 제기는 “최근 ~에 대한 관심이 커지고 있다.”, 범위와 방법은 “본론에서는 ~를 살펴볼 것이다.”처럼 씁니다.",zh:"先概括介绍先行研究，再指出其局限，才能说服读者为什么还要继续研究这个问题。提出问题可以写成“最近人们对~的关注日益增加。”，范围与方法可以写成“正文将考察~。”",en:"After summarizing previous research, you point out its limits to persuade readers why the problem still needs study. Raising the problem sounds like 'Interest in ~ has grown recently,' and scope and method like 'The body will examine ~.'",ru:"Кратко изложив предыдущие исследования, нужно указать их ограничения, чтобы убедить читателя, зачем изучать проблему дальше. Постановка проблемы: «В последнее время растёт интерес к ~». Рамки и метод: «В основной части будет рассмотрено ~».",ja:"先行研究を要約して紹介したうえで、その限界を指摘してこそ、なぜこの問題を研究し続けるのかを読者に納得させられます。問題提起は「最近〜への関心が高まっている。」、範囲と方法は「本論では〜を見ていく。」のように書きます。",mn:"Өмнөх судалгааг товч танилцуулсны дараа хязгаарлалтыг нь заавал энэ асуудлыг яагаад үргэлжлүүлэн судлах ёстойг уншигчдад ойлгуулж чадна. Асуудал дэвшүүлэхдээ «Сүүлийн үед ~-д анхаарал нэмэгдэж байна.», хүрээ ба аргыг «Үндсэн хэсэгт ~-г авч үзнэ.» гэж бичнэ."}},
+ {type:"ox",ans:0,src:"교재 106–107쪽",
+  q:{ko:"본론에서 반대 견해를 제시하고 다시 반박하면, 내 주장의 타당성이 오히려 강조될 수 있다.",zh:"在正文中提出反对意见再加以反驳，反而能突出自己主张的合理性。",en:"Presenting an opposing view in the body and then refuting it can actually strengthen your claim.",ru:"Если в основной части привести противоположное мнение, а затем опровергнуть его, обоснованность вашей позиции, наоборот, усилится.",ja:"本論で反対の見解を示し、それに再反論すると、自分の主張の妥当性がかえって強調される。",mn:"Үндсэн хэсэгт эсрэг байр суурийг гаргаад дахин няцаавал өөрийн санааны үндэслэл харин ч илүү тодордог."},
+  exp:{ko:"반대 주장을 넣으면 내 주장이 약해진다고 생각하기 쉽지만, 반대 견해를 상정하고 재반박하면 분석 결과의 타당성이 더 강조됩니다. 교재는 이것을 본론을 쓰는 방법으로 제시합니다.",zh:"人们容易以为加入反对意见会削弱自己的主张，但设想反对意见并加以反驳，反而更能强调分析结果的合理性。教材把这作为写正文的方法之一。",en:"It is easy to think an opposing view weakens your claim, but anticipating it and refuting it makes your analysis more convincing. The textbook presents this as a way of writing the body.",ru:"Легко подумать, что чужое мнение ослабит вашу позицию, но если предусмотреть возражение и опровергнуть его, анализ станет убедительнее. Учебник предлагает это как способ писать основную часть.",ja:"反対意見を入れると自分の主張が弱くなると思いがちですが、反対の見解を想定して再反論すると、分析結果の妥当性がより強調されます。教科書はこれを本論の書き方として示しています。",mn:"Эсрэг санаа оруулбал өөрийн санаа сулрана гэж бодоход амархан. Гэвч эсрэг үзлийг урьдчилан тооцож няцаавал шинжилгээний үр дүн илүү үнэмшилтэй болдог. Сурах бичигт үүнийг үндсэн хэсгийг бичих арга гэж заажээ."}},
+ {type:"mc",ans:1,src:"교재 106–107쪽",
+  q:{ko:"“~와/과 달리”, “~(으)ㄴ/는 반면에” 같은 표현을 주로 쓰는 본론의 논증 구조는?",zh:"主要使用“与~不同”“而~（相反）”这类表达的正文论证结构是哪一种？",en:"Which argument structure in the body mainly uses expressions like '~와/과 달리 (unlike ~)' and '~(으)ㄴ/는 반면에 (whereas ~)'?",ru:"В какой структуре аргументации основной части чаще всего используют выражения «~와/과 달리 (в отличие от ~)» и «~(으)ㄴ/는 반면에 (тогда как ~)»?",ja:"「〜와/과 달리（〜と違って）」「〜(으)ㄴ/는 반면에（〜である反面）」のような表現を主に使う本論の論証構造はどれですか。",mn:"«~와/과 달리 (~-ээс ялгаатай)», «~(으)ㄴ/는 반면에 (харин ~)» зэрэг хэллэгийг голчлон ашигладаг үндсэн хэсгийн үндэслэлийн бүтэц аль нь вэ?"},
+  opts:[
+   {ko:"주장 – 제시하기",zh:"主张 – 提出",en:"Claim – presenting reasons",ru:"Утверждение – доводы",ja:"主張 – 提示",mn:"Санаа – үндэслэл гаргах"},
+   {ko:"비교 – 분석하기",zh:"比较 – 分析",en:"Comparison – analysis",ru:"Сравнение – анализ",ja:"比較 – 分析",mn:"Харьцуулалт – шинжилгээ"},
+   {ko:"문제 진단 – 대책 제시하기",zh:"问题诊断 – 提出对策",en:"Problem diagnosis – solutions",ru:"Диагностика проблемы – решения",ja:"問題診断 – 対策提示",mn:"Асуудлыг оношлох – шийдэл санал болгох"}],
+  exp:{ko:"비교–분석하기는 공통점과 차이점을 바탕으로 분석 결과를 보여 줍니다. 공통점은 “~라는 점에서 유사하다”, 차이점은 “~와/과 달리”, “~(으)ㄴ/는 반면에”로 씁니다. 주장–제시하기는 “왜냐하면 ~기 때문이다”, 문제 진단–대책은 “첫째, ~이/가 필요하다”를 씁니다.",zh:"比较–分析是以共同点和不同点为基础展示分析结果。共同点用“在~这一点上相似”，不同点用“与~不同”“而~”。主张–提出用“因为~”，问题诊断–对策用“第一，需要~”。",en:"Comparison–analysis shows results based on similarities and differences. Similarities: '~라는 점에서 유사하다 (similar in that ~)'; differences: '~와/과 달리', '~(으)ㄴ/는 반면에'. Claim–reasons uses '왜냐하면 ~기 때문이다 (because ~)', and problem–solutions uses '첫째, ~이/가 필요하다 (first, ~ is needed)'.",ru:"Сравнение–анализ показывает результаты на основе сходств и различий. Сходство: «~라는 점에서 유사하다 (похожи тем, что ~)»; различие: «~와/과 달리», «~(으)ㄴ/는 반면에». В структуре «утверждение – доводы» пишут «왜냐하면 ~기 때문이다 (потому что ~)», а в структуре «проблема – решения» — «첫째, ~이/가 필요하다 (во-первых, нужно ~)».",ja:"比較–分析は、共通点と相違点をもとに分析結果を示します。共通点は「〜라는 점에서 유사하다（〜という点で似ている）」、相違点は「〜와/과 달리」「〜(으)ㄴ/는 반면에」で書きます。主張–提示は「왜냐하면 〜기 때문이다（なぜなら〜だからだ）」、問題診断–対策は「첫째, 〜이/가 필요하다（第一に〜が必要だ）」を使います。",mn:"Харьцуулалт–шинжилгээ нь ижил ба ялгаатай талд тулгуурлан үр дүнг харуулдаг. Ижил талыг «~라는 점에서 유사하다 (~ гэдгээрээ төстэй)», ялгааг «~와/과 달리», «~(으)ㄴ/는 반면에» гэж бичнэ. Санаа–үндэслэлд «왜냐하면 ~기 때문이다 (учир нь ~)», асуудал–шийдэлд «첫째, ~이/가 필요하다 (нэгдүгээрт, ~ хэрэгтэй)» гэж хэрэглэнэ."}},
+ {type:"ox",ans:1,src:"교재 107–108쪽",
+  q:{ko:"결론에서 앞에서 다루지 않은 새로운 주제를 제시하면 글이 더 풍부해진다.",zh:"在结论中提出前面没有讨论过的新主题，会使文章更丰富。",en:"Introducing a new topic in the conclusion that you did not discuss earlier makes the essay richer.",ru:"Если в заключении ввести новую тему, которая раньше не обсуждалась, текст станет богаче.",ja:"結論で、前に扱わなかった新しいテーマを示すと、文章がより豊かになる。",mn:"Дүгнэлтэд өмнө нь авч үзээгүй шинэ сэдэв оруулбал бичвэр илүү баялаг болно."},
+  exp:{ko:"결론에는 앞에서 다루지 않은 새로운 주제를 넣지 않습니다(5주차와 같은 원칙). 결론에는 본론의 재정리와 요약, 연구의 성과와 한계를 쓰고, 필요하면 기대 효과와 전망을 덧붙입니다.",zh:"结论中不提出前面没有讨论过的新主题（与第5周的原则相同）。结论写正文的整理与概括、研究的成果与局限，必要时再补充预期效果和展望。",en:"Do not introduce a new topic in the conclusion (the same rule as Week 5). The conclusion restates and summarizes the body and gives the study's achievements and limitations, adding expected effects and outlook if needed.",ru:"В заключении не вводят новых тем (то же правило, что на 5-й неделе). В заключении подводят итог основной части, называют результаты и ограничения исследования, а при необходимости — ожидаемый эффект и перспективы.",ja:"結論には、前に扱わなかった新しいテーマを入れません（第5週と同じ原則）。結論には本論の再整理と要約、研究の成果と限界を書き、必要なら期待される効果と展望を加えます。",mn:"Дүгнэлтэд өмнө нь авч үзээгүй шинэ сэдэв оруулдаггүй (5 дахь долоо хоногийнхтой ижил зарчим). Дүгнэлтэд үндсэн хэсгийг нэгтгэн товчилж, судалгааны ололт ба хязгаарлалтыг бичиж, шаардлагатай бол хүлээгдэж буй үр дүн, ирээдүйн төлөвийг нэмнэ."}},
+ {type:"mc",ans:0,src:"교재 110–113쪽",
+  q:{ko:"참고문헌 목록을 배열하는 방법으로 알맞은 것은?",zh:"下列哪一项是排列参考文献列表的正确方法？",en:"Which is the correct way to order a reference list?",ru:"Как правильно упорядочить список литературы?",ja:"参考文献リストの並べ方として正しいものはどれですか。",mn:"Ном зүйн жагсаалтыг эрэмбэлэх зөв арга аль нь вэ?"},
+  opts:[
+   {ko:"국내 문헌은 가나다순, 국외 문헌은 알파벳순으로 놓는다.",zh:"国内文献按韩文字母顺序，国外文献按英文字母顺序排列。",en:"Korean works in 가나다 order, foreign works in alphabetical order.",ru:"Корейские работы — в порядке корейского алфавита, иностранные — в порядке латинского алфавита.",ja:"国内文献はカナダ順（韓国語の字母順）、国外文献はアルファベット順に並べる。",mn:"Дотоодын бүтээлийг солонгос цагаан толгойн дарааллаар, гадаадын бүтээлийг латин цагаан толгойн дарааллаар байрлуулна."},
+   {ko:"국외 문헌을 먼저, 국내 문헌을 뒤에 놓는다.",zh:"国外文献在前，国内文献在后。",en:"Foreign works first, Korean works after.",ru:"Сначала иностранные работы, потом корейские.",ja:"国外文献を先に、国内文献を後に置く。",mn:"Гадаадын бүтээлийг эхэнд, дотоодынхыг араас нь байрлуулна."},
+   {ko:"같은 필자의 문헌은 제목의 가나다순으로 놓는다.",zh:"同一作者的文献按题目的韩文字母顺序排列。",en:"Works by the same author in 가나다 order of their titles.",ru:"Работы одного автора — по алфавиту названий.",ja:"同じ著者の文献は、タイトルのカナダ順に並べる。",mn:"Нэг зохиогчийн бүтээлийг гарчгийн цагаан толгойн дарааллаар байрлуулна."},
+   {ko:"기타 자료를 가장 먼저 놓는다.",zh:"其他资料放在最前面。",en:"Other materials come first.",ru:"Прочие материалы ставят в самое начало.",ja:"その他の資料を一番先に置く。",mn:"Бусад материалыг хамгийн эхэнд байрлуулна."}],
+  exp:{ko:"기본 자료 → 단행본 및 논저 → 기타 자료 순서로 놓고, 국내 문헌을 먼저, 국외 문헌을 뒤에 둡니다. 국내는 가나다순, 국외는 알파벳순이며, 같은 필자의 문헌은 출판 연도순으로 놓습니다.",zh:"按基本资料 → 专著及论著 → 其他资料的顺序排列，国内文献在前，国外文献在后。国内按韩文字母顺序，国外按英文字母顺序，同一作者的文献按出版年份排列。",en:"Order: primary sources → books and studies → other materials, with Korean works first and foreign works after. Korean works go in 가나다 order and foreign works alphabetically; works by the same author go by year of publication.",ru:"Порядок: основные источники → книги и исследования → прочие материалы; корейские работы идут первыми, иностранные — после. Корейские — по корейскому алфавиту, иностранные — по латинскому, работы одного автора — по году издания.",ja:"基本資料 → 単行本・論著 → その他の資料の順に並べ、国内文献を先に、国外文献を後に置きます。国内はカナダ順、国外はアルファベット順で、同じ著者の文献は出版年順に並べます。",mn:"Үндсэн эх сурвалж → ном ба судалгааны бүтээл → бусад материал гэсэн дарааллаар, дотоодын бүтээлийг эхэнд, гадаадынхыг араас нь байрлуулна. Дотоодынхыг солонгос цагаан толгойн, гадаадынхыг латин цагаан толгойн дарааллаар, нэг зохиогчийн бүтээлийг хэвлэгдсэн оноор нь эрэмбэлнэ."}},
+ {type:"ox",ans:1,src:"강의자료 17쪽",
+  q:{ko:"AI가 만들어 준 참고문헌 목록은 형식이 정확하므로 그대로 써도 된다.",zh:"AI生成的参考文献列表格式准确，所以可以直接使用。",en:"A reference list made by AI has the correct format, so you can use it as it is.",ru:"Список литературы, составленный ИИ, оформлен правильно, поэтому его можно использовать как есть.",ja:"AIが作った参考文献リストは形式が正確なので、そのまま使ってよい。",mn:"Хиймэл оюуны гаргасан ном зүйн жагсаалт хэлбэрийн хувьд зөв тул шууд ашиглаж болно."},
+  exp:{ko:"참고문헌은 AI가 만들어 낸 것을 절대 쓰지 않습니다. AI는 존재하지 않는 문헌이나 통계를 만들어 낼 수 있습니다. AI가 추가한 사실·통계·문헌은 한 건씩 직접 확인하고, 확인되지 않으면 삭제한 뒤 이유를 적습니다.",zh:"绝对不要使用AI生成的参考文献。AI可能会编造不存在的文献或统计数据。对于AI添加的事实、统计和文献，要逐条亲自核实；无法核实的就删掉，并写下理由。",en:"Never use references that AI produced. AI can invent works or statistics that do not exist. Check every fact, statistic, and reference the AI added one by one; if you cannot verify it, delete it and write down why.",ru:"Никогда не используйте список литературы, созданный ИИ. ИИ может выдумать несуществующие работы или статистику. Проверяйте каждый факт, цифру и источник, добавленный ИИ; если подтвердить не удаётся, удалите и запишите причину.",ja:"参考文献は、AIが作り出したものを絶対に使いません。AIは存在しない文献や統計を作り出すことがあります。AIが加えた事実・統計・文献は一件ずつ自分で確認し、確認できなければ削除して理由を書きます。",mn:"Хиймэл оюуны гаргасан ном зүйг хэзээ ч бүү ашигла. Хиймэл оюун байхгүй бүтээл, статистик зохиож болно. Хиймэл оюуны нэмсэн баримт, статистик, эх сурвалжийг нэг бүрчлэн өөрөө шалгаж, батлагдахгүй бол устгаад шалтгааныг нь бичнэ."}}
+];
+
+const KEY="hyu-w12-academic-quiz";
+let S={lang:null,i:0,a:Array(Q.length).fill(null),done:false};
+try{const s=JSON.parse(localStorage.getItem(KEY)||"null");if(s&&Array.isArray(s.a)&&s.a.length===Q.length)S=Object.assign(S,s);}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+
+const L=()=>LANGS.find(x=>x.c===S.lang);
+function tr(o,rep){
+  const f=s=>rep?s.replace("{n}",rep):s;
+  let h='<span class="ko">'+f(o.ko)+'</span>';
+  const l=L();
+  if(l&&o[l.c])h+='<span class="tr" lang="'+l.h+'">'+f(o[l.c])+'</span>';
+  return h;
+}
+const isOk=k=>S.a[k]!==null&&S.a[k]===Q[k].ans;
+const firstOpen=()=>{const k=S.a.indexOf(null);return k<0?Q.length:k};
+function ansLabel(q){
+  if(q.type==="ox")return q.ans===0?{ko:"O · "+T.o.ko,zh:"O · "+T.o.zh,en:"O · "+T.o.en,ru:"O · "+T.o.ru,ja:"O · "+T.o.ja,mn:"O · "+T.o.mn}:{ko:"X · "+T.x.ko,zh:"X · "+T.x.zh,en:"X · "+T.x.en,ru:"X · "+T.x.ru,ja:"X · "+T.x.ja,mn:"X · "+T.x.mn};
+  const o=q.opts[q.ans],r={};for(const k in o)r[k]=(q.ans+1)+". "+o[k];return r;
+}
+function inline(o){const l=L();return o.ko+(l&&o[l.c]?' <span lang="'+l.h+'" style="color:var(--sub);font-weight:500">('+o[l.c]+')</span>':'')}
+
+function renderLangs(){
+  const el=document.getElementById("langs");
+  el.innerHTML='<button class="lang" id="lang-none" data-lang="" aria-pressed="'+(!S.lang)+'">한국어만</button>'+
+    LANGS.map(l=>'<button class="lang" id="lang-'+l.c+'" lang="'+l.h+'" data-lang="'+l.c+'" aria-pressed="'+(S.lang===l.c)+'">'+l.l+'</button>').join("");
+  const h=document.getElementById("heroTr"),l=L();
+  h.textContent=l?T.hero[l.c]:"";h.lang=l?l.h:"";h.hidden=!l;
+}
+function renderProg(){
+  const fo=firstOpen();
+  document.getElementById("prog").innerHTML=Q.map((q,k)=>{
+    const cls=["seg"];if(S.a[k]!==null)cls.push(isOk(k)?"ok":"no");if(!S.done&&k===S.i)cls.push("cur");
+    return '<button class="'+cls.join(" ")+'" data-go="'+k+'"'+(k>fo?" disabled":"")+' aria-label="'+(k+1)+'번 문제">'+(k+1)+'</button>';
+  }).join("");
+}
+function qView(){
+  const k=S.i,q=Q[k],a=S.a[k],done=a!==null,ok=done&&a===q.ans;
+  let h='<article class="card"><div class="qhead"><span class="qnum">Q'+(k+1)+'</span><span class="chip soft">'+(q.type==="ox"?T.ox.ko:T.mc.ko)+'</span><span class="count">'+(k+1)+' / '+Q.length+'</span></div>';
+  h+='<h2 class="qtext">'+tr(q.q)+'</h2>';
+  const st=v=>!done?"":(v===q.ans?" is-right":(v===a?" is-wrong":" is-dim"));
+  if(q.type==="ox"){
+    h+='<div class="oxrow">'+[0,1].map(v=>'<button class="ox'+(v?" x":"")+st(v)+'" id="q'+k+'-'+v+'" data-pick="'+v+'"'+(done?" disabled":"")+'><span class="gl">'+(v?"X":"O")+'</span><span class="lab">'+tr(v?T.x:T.o)+'</span></button>').join("")+'</div>';
+  }else{
+    h+='<div class="opts">'+q.opts.map((o,v)=>'<button class="opt'+st(v)+'" id="q'+k+'-'+v+'" data-pick="'+v+'"'+(done?" disabled":"")+'><span class="bd">'+(v+1)+'</span><span class="tx">'+tr(o)+'</span></button>').join("")+'</div>';
+  }
+  if(done){
+    h+='<div class="fb '+(ok?"ok":"no")+'" role="status"><p class="verdict"><span class="mk" aria-hidden="true">'+(ok?"✓":"✕")+'</span><span>'+tr(ok?T.right:T.wrong)+'</span></p>';
+    if(!ok)h+='<p class="ans"><b>'+T.answer.ko+'</b> '+inline(ansLabel(q))+'</p>';
+    h+='<div class="exp"><div class="exp-h"><span class="chip cream">'+T.exp.ko+(L()?' · <span lang="'+L().h+'">'+T.exp[L().c]+'</span>':'')+'</span><span class="src">'+q.src+'</span></div><p>'+tr(q.exp)+'</p></div></div>';
+  }
+  h+='<div class="nav">';
+  if(k>0)h+='<button class="btn ghost" id="btn-prev" data-act="prev">'+T.prev.ko+'</button>';
+  if(done){
+    const last=k===Q.length-1||firstOpen()===Q.length&&k===Q.length-1;
+    const allDone=firstOpen()===Q.length;
+    if(k<Q.length-1)h+='<button class="btn primary" id="btn-next" data-act="next">'+tr(T.next)+'</button>';
+    else if(allDone)h+='<button class="btn primary" id="btn-result" data-act="result">'+tr(T.result)+'</button>';
+  }
+  h+='</div>';
+  if(!done)h+='<p class="hint">'+inline(T.pick)+'</p>';
+  return h+'</article>';
+}
+function rView(){
+  const n=Q.filter((q,k)=>isOk(k)).length;
+  const msg=n===Q.length?T.m10:(n>=7?T.m7:T.m0);
+  let h='<section class="card result"><span class="chip gold">Result</span>';
+  h+='<p class="score"><b>'+n+'</b><span>/ '+Q.length+'</span></p>';
+  h+='<p class="r-line">'+tr(T.got,String(n))+'</p><p class="r-msg">'+tr(msg)+'</p>';
+  const wrong=Q.map((q,k)=>k).filter(k=>!isOk(k));
+  if(wrong.length){
+    h+='<div class="review"><h3>'+inline(T.review)+'</h3><ol class="rv">'+wrong.map(k=>'<li><span class="n">Q'+(k+1)+'</span><div class="c">'+tr(Q[k].q)+'<p class="ans"><b>'+T.answer.ko+'</b> '+inline(ansLabel(Q[k]))+'</p></div><button id="rv-'+k+'" data-go="'+k+'">'+T.see.ko+'</button></li>').join("")+'</ol></div>';
+  }else{
+    h+='<div class="allok">'+tr(T.allok)+'</div>';
+  }
+  h+='<div class="nav"><button class="btn primary" id="btn-retry" data-act="retry">'+tr(T.retry)+'</button></div></section>';
+  return h;
+}
+function render(focusTop){
+  renderLangs();renderProg();
+  document.getElementById("app").innerHTML=S.done?rView():qView();
+  if(focusTop){const p=document.getElementById("prog");const y=p.getBoundingClientRect().top+window.scrollY-70;if(window.scrollY>y)window.scrollTo({top:y,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});}
+}
+
+document.getElementById("langs").addEventListener("click",e=>{
+  const b=e.target.closest("[data-lang]");if(!b)return;
+  S.lang=b.dataset.lang||null;save();render(false);
+});
+document.addEventListener("click",e=>{
+  const pick=e.target.closest("[data-pick]");
+  if(pick&&!pick.disabled){S.a[S.i]=Number(pick.dataset.pick);save();render(false);
+    const fb=document.querySelector(".fb");if(fb&&fb.getBoundingClientRect().top>window.innerHeight-120)fb.scrollIntoView({block:"nearest",behavior:"smooth"});return;}
+  const go=e.target.closest("[data-go]");
+  if(go&&!go.disabled){S.i=Number(go.dataset.go);S.done=false;save();render(true);return;}
+  const act=e.target.closest("[data-act]");if(!act)return;
+  const a=act.dataset.act;
+  if(a==="next"){S.i=Math.min(S.i+1,Q.length-1);}
+  else if(a==="prev"){S.i=Math.max(S.i-1,0);}
+  else if(a==="result"){S.done=true;}
+  else if(a==="retry"){S.a=Array(Q.length).fill(null);S.i=0;S.done=false;}
+  save();render(true);
+});
+render(false);
+</script>
+</body>
+</html>
